@@ -8,16 +8,16 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    connect(ui->botonn,SIGNAL(clicked()),this,SLOT(prueba()));
+    nivel = new game;
+
+    nivel->setSceneRect(0,0,ui->graphicsView->width()-2,ui->graphicsView->height()-2);
+
+    ui->graphicsView->setScene(nivel);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
-}
-
-void MainWindow::prueba()
-{
-    ui->botonn->setText("asdfgl");
+    delete nivel;
 }
 
