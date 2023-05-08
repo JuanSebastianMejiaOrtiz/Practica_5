@@ -9,7 +9,6 @@
 #define ancho_mainchar 16
 #define pos_x_initial 0
 #define pos_y_initial 0
-#define
 
 class mainchar : public QGraphicsPixmapItem
 {

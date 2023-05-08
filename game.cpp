@@ -3,7 +3,7 @@
 
 game::game()
 {
-    bomberman = new mainchar(0,0,100,100);
+    bomberman = new mainchar();
     addItem(bomberman);
 }
 

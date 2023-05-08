@@ -13,12 +13,12 @@ control_sprite::~control_sprite()
     delete actual;
 }
 
-void control_sprite::Select_sprite()
+void control_sprite::Select_sprite(int x, int y)
 {
 
 }
 
-void control_sprite::Scale_sprite()
+void control_sprite::Scale_sprite(float scale)
 {
 
 }
