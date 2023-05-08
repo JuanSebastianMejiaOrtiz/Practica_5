@@ -5,6 +5,10 @@ Character::Character()
 {
     Pos_x = new int;
     Pos_y = new int;
+    *Pos_x = Start_Point_x;
+    *Pos_y = Start_Point_y;
+    Movement_Speed = Walk_Velocity;
+    Walk_Animation_Speed = Walk_Animation_Velocity;
 }
 
 void Character::Walk_Up_Animation()

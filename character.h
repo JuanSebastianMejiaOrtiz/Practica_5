@@ -3,6 +3,12 @@
 #define CHARACTER_H
 
 #include "control_sprite.h"
+#include <QGraphicsPixmapItem>
+
+#define Walk_Velocity 10
+#define Walk_Animation_Velocity 4
+#define Start_Point_x 0
+#define Start_Point_y 0
 
 class Character : protected control_sprite
 {
@@ -20,7 +26,8 @@ public:
 private:
     float Movement_Speed;
     int Walk_Animation_Speed;
-    int *Pos_x = 0, *Pos_y = 0;
+    int *Pos_x;
+    int *Pos_y;
 };
 
 #endif // CHARACTER_H
