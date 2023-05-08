@@ -5,15 +5,17 @@
 #include <QGraphicsPixmapItem>
 #include <QKeyEvent>
 
+#define alto_mainchar 16
+#define ancho_mainchar 16
+#define pos_x_initial 0
+#define pos_y_initial 0
+#define
 
 class mainchar : public QGraphicsPixmapItem
 {
 public:
-    mainchar(int x, int y, int ancho, int alto);
+    mainchar();
     ~mainchar();
-
-    void Select_Sprite(int x, int y);
-    void Scale_Sprite(int scale);
 
     //Inputs
     void keyPressEvent(QKeyEvent *event);
@@ -31,9 +33,7 @@ public:
 
 
 private:
-    QPixmap* ImgMainChar;
     char* movement_input; //u:up ; d:down ; l:left ; r:right ; n:none
-    bool* Se_Mueve;
 
 };
 

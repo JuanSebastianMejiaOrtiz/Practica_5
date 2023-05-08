@@ -1,19 +1,16 @@
 
 #include "mainchar.h"
 
-mainchar::mainchar(int x, int y, int ancho, int alto)
+mainchar::mainchar()
 {
     //Inicializar variables
     movement_input = new char;
     *movement_input = 'n';
-    ImgMainChar = new QPixmap;
-    Se_Mueve = new bool;
-    *Se_Mueve = 1;
 
     //Obtain Sprite Main Character
     QPixmap imagen;
     imagen.load("://Recursos/Practica5_sprites.png");
-    *ImgMainChar = imagen.copy(x,y,ancho,alto);
+    *full = imagen.copy(x,y,ancho,alto);
     setPos(0,0);
     //setPixmap(ImgMainChar);
 }
@@ -21,8 +18,6 @@ mainchar::mainchar(int x, int y, int ancho, int alto)
 mainchar::~mainchar()
 {
     delete movement_input;
-    delete ImgMainChar;
-    delete Se_Mueve;
 }
 
 void mainchar::keyPressEvent(QKeyEvent *event)
