@@ -10,7 +10,7 @@ public:
     control_sprite();
     ~control_sprite();
 
-    void Select_sprite(int x, int y);
+    void Select_sprite(int x, int y, int width_sprite, int height_sprite);
     void Scale_sprite(float scale);
     void Show_Sprite(bool appear);
 protected:
