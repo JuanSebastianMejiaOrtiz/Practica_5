@@ -3,9 +3,11 @@
 #define CONTROL_SPRITE_H
 
 #include <QGraphicsPixmapItem>
+#include <QTimer>
 
-class control_sprite : public QGraphicsPixmapItem
+class control_sprite : public QGraphicsPixmapItem, public QObject
 {
+    Q_OBJECT
 public:
     control_sprite();
     ~control_sprite();
