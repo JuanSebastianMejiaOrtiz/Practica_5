@@ -7,23 +7,22 @@
 
 #define Walk_Velocity 10
 #define Walk_Animation_Velocity 4
-#define Start_Point_x 0
-#define Start_Point_y 0
 #define Ammount_of_Frames_Walk 3
 
 class Character : protected control_sprite
 {
     Q_OBJECT
 public:
-    Character();
+    Character(int Start_Point_x, int Start_Point_y);
     ~Character();
 
     //Movement
-    void Movement(char *direction);
+    void Movement();
 private:
     int Movement_Speed;
     int *Pos_x;
     int *Pos_y;
+    char *direction;
 
     short Walk_Animation_Speed;
     short Walk_Animation_Frame_Ammount;

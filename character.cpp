@@ -1,10 +1,14 @@
 
 #include "character.h"
 
-Character::Character()
+Character::Character(int Start_Point_x, int Start_Point_y)
 {
+    //Asignar memoria
     Pos_x = new int;
     Pos_y = new int;
+    direction = new char;
+
+    //Ponerles valor default
     *Pos_x = Start_Point_x;
     *Pos_y = Start_Point_y;
     Movement_Speed = Walk_Velocity;
@@ -18,7 +22,7 @@ Character::~Character()
     delete Pos_y;
 }
 
-void Character::Movement(char *direction)
+void Character::Movement()
 {
     if (*direction == 'u'){
 
