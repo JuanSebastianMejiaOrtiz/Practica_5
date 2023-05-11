@@ -12,7 +12,7 @@
 #define pos_x_initial 0
 #define pos_y_initial 0
 
-class mainchar : public Character
+class mainchar
 {
 public:
     mainchar();

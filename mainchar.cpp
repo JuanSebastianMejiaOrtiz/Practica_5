@@ -6,11 +6,10 @@ mainchar::mainchar()
     //Inicializar variables
     mc = new Character(pos_x_initial, pos_y_initial);
 
-    //Obtain Sprite Main Character
+    //Obtain QPixmap full
     QPixmap imagen;
     imagen.load("://Recursos/Practica5_sprites.png");
-    *full = imagen.copy(0, 0, ancho_mainchar*7, alto_mainchar*3);
-    setPos(pos_x_initial,pos_y_initial);
+    *(mc->full) = imagen.copy(0, 0, ancho_mainchar*7, alto_mainchar*3);
 }
 
 mainchar::~mainchar()

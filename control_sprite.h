@@ -15,7 +15,7 @@ public:
     void Select_sprite(int x, int y, int width_sprite, int height_sprite);
     void Scale_sprite(float scale);
     void Show_Sprite(bool appear);
-protected:
+
     QPixmap *full, *actual;
 };
 
