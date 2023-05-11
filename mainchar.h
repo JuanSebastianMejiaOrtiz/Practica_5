@@ -22,11 +22,10 @@ public:
     void Dead_Animation();
     //Inputs
     void keyPressEvent(QKeyEvent *event);
+    void keyReleaseEvent(QKeyEvent *event);
     //Bomba
-
 private:
-    std::string *movement_input; //u:up ; d:down ; l:left ; r:right ; n:none
-
+    Character *mc;
 };
 
 #endif // MAINCHAR_H
