@@ -10,6 +10,7 @@ class game : public QGraphicsScene
 {
 public:
     game();
+    ~game();
 
 private:
     mainchar *bomberman;

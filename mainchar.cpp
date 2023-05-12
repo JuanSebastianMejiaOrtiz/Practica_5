@@ -17,6 +17,11 @@ mainchar::~mainchar()
     delete mc;
 }
 
+void mainchar::Dead_Animation()
+{
+
+}
+
 void mainchar::keyPressEvent(QKeyEvent *event)
 {
     //Movement

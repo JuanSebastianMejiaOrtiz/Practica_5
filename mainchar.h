@@ -18,14 +18,14 @@ public:
     mainchar();
     ~mainchar();
 
+    Character *mc;
+
     //Dead Animation
     void Dead_Animation();
     //Inputs
     void keyPressEvent(QKeyEvent *event);
     void keyReleaseEvent(QKeyEvent *event);
     //Bomba
-private:
-    Character *mc;
 };
 
 #endif // MAINCHAR_H

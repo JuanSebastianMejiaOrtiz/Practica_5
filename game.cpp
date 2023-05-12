@@ -4,6 +4,11 @@
 game::game()
 {
     bomberman = new mainchar();
-    addItem(bomberman);
+    addItem(bomberman->mc);
+}
+
+game::~game()
+{
+    delete bomberman;
 }
 
