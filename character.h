@@ -17,7 +17,7 @@ class Character : public control_sprite
     Q_OBJECT
 public:
     Character(int Start_Point_x, int Start_Point_y);
-    virtual ~Character();
+    ~Character();
 
     //Movement
     void Movement();

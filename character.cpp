@@ -19,7 +19,7 @@ Character::Character(int Start_Point_x, int Start_Point_y)
 
     //Inicializar timer
     timer = new QTimer(this);
-    connect(timer, SIGNAL(timeout), this, SLOT(Walk_Animation()));
+    connect(timer, SIGNAL(timeout()), this, SLOT(Walk_Animation()));
 }
 
 Character::~Character()

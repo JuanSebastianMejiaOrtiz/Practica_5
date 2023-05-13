@@ -5,12 +5,11 @@
 #include <QGraphicsPixmapItem>
 #include <QTimer>
 
-class control_sprite : public QGraphicsPixmapItem, public QObject
+class control_sprite : public QObject, public QGraphicsPixmapItem
 {
-    Q_OBJECT
 public:
     control_sprite();
-    virtual ~control_sprite();
+    ~control_sprite();
 
     void Select_sprite(int x, int y);
     void Scale_sprite(float scale);
