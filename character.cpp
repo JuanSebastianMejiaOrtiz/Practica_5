@@ -7,18 +7,18 @@ Character::Character(int Start_Point_x, int Start_Point_y)
     Pos_x = new int;
     Pos_y = new int;
     direction = new char;
+    timer = new QTimer(this);
 
     //Ponerles valor default
     *Pos_x = Start_Point_x;
     *Pos_y = Start_Point_y;
-    Movement_Speed = Walk_Velocity;
+    Movement_Speed = Walk_Speed;
 
     //Animation
-    Walk_Animation_Speed = Walk_Animation_Velocity;
+    Walk_Animation_Speed = _Walk_Animation_Speed;
     Walk_Animation_Actual_Frame = 0;
 
     //Inicializar timer
-    timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(Walk_Animation()));
 }
 

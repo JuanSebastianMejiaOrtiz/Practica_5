@@ -3,14 +3,7 @@
 #define CHARACTER_H
 
 #include "control_sprite.h"
-#include <QGraphicsPixmapItem>
-
-//Movement
-#define Walk_Velocity 10
-#define Max_Walk_Speed 20
-
-#define Walk_Animation_Velocity 200
-#define Walk_Animation_Frame_Ammount 3
+#include "global_maincharacter.h"
 
 class Character : public control_sprite
 {

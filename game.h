@@ -3,6 +3,7 @@
 #define GAME_H
 
 #include <QGraphicsScene>
+#include <QGraphicsPixmapItem>
 
 #include "mainchar.h"
 
