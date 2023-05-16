@@ -5,7 +5,7 @@
 #include <QKeyEvent>
 
 #include "character.h"
-#include "global_maincharacter.h"
+#include "global_macros.h"
 
 class mainchar : public Character
 {

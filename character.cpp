@@ -119,7 +119,8 @@ void Character::Walk_Animation()
 void Character::Walk_Up_Animation()
 {
     if (Walk_Animation_Actual_Frame < Walk_Animation_Frame_Ammount){
-        Select_sprite( (3+Walk_Animation_Actual_Frame), 1);
+        Select_sprite( (Walk_Animation_Frame_Ammount+Walk_Animation_Actual_Frame), 1);
+        Scale_sprite(Scale);
         Show_Sprite(1);
     }
     else{
@@ -131,7 +132,8 @@ void Character::Walk_Up_Animation()
 void Character::Walk_Down_Animation()
 {
     if (Walk_Animation_Actual_Frame < Walk_Animation_Frame_Ammount){
-        Select_sprite( (3+Walk_Animation_Actual_Frame), 0);
+        Select_sprite( (Walk_Animation_Frame_Ammount+Walk_Animation_Actual_Frame), 0);
+        Scale_sprite(Scale);
         Show_Sprite(1);
     }
     else{
@@ -144,6 +146,7 @@ void Character::Walk_Left_Animation()
 {
     if (Walk_Animation_Actual_Frame < Walk_Animation_Frame_Ammount){
         Select_sprite( (Walk_Animation_Actual_Frame), 0);
+        Scale_sprite(Scale);
         Show_Sprite(1);
     }
     else{
@@ -156,6 +159,7 @@ void Character::Walk_Right_Animation()
 {
     if (Walk_Animation_Actual_Frame < Walk_Animation_Frame_Ammount){
         Select_sprite( (Walk_Animation_Actual_Frame), 1);
+        Scale_sprite(Scale);
         Show_Sprite(1);
     }
     else{

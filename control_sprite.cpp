@@ -32,6 +32,10 @@ void control_sprite::Scale_sprite(float scale)
 
 void control_sprite::Show_Sprite(bool appear)
 {
-    if(appear) setPixmap(*actual);
+    if(appear){
+        setPixmap(*actual);
+        setVisible(1);
+    }
+    else setVisible(0);
 }
 

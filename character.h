@@ -3,7 +3,7 @@
 #define CHARACTER_H
 
 #include "control_sprite.h"
-#include "global_maincharacter.h"
+#include "global_macros.h"
 
 class Character : public control_sprite
 {

@@ -6,7 +6,7 @@
 #include <QGraphicsPixmapItem>
 
 #include "mainchar.h"
-#include "global_maincharacter.h"
+#include "global_macros.h"
 
 class game : public QGraphicsScene
 {
