@@ -16,12 +16,28 @@ public:
     void Movement();
     void Move();
 
-private:
+    void Set_Direction(char car);
+    char Get_Direction();
+
+    void Set_Pos_x(int new_pos);
+    int Get_Pos_x();
+
+    void Set_Pos_y(int new_pos);
+    int Get_Pos_y();
+
+    void Set_Walk_Animation_Speed(short speed);
+    short Get_Walk_Animation_Speed();
+
+    void Set_isMoving(bool VoF);
+    bool Get_isMoving();
+
+protected:
     //Position Variables
     int Movement_Speed;
     int *Pos_x;
     int *Pos_y;
     char *direction;
+    bool *isMoving;
 
     //Animation Variables
     short Walk_Animation_Speed;

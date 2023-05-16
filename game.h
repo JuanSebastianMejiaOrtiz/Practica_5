@@ -6,12 +6,15 @@
 #include <QGraphicsPixmapItem>
 
 #include "mainchar.h"
+#include "global_maincharacter.h"
 
 class game : public QGraphicsScene
 {
 public:
     game();
     ~game();
+
+    void keyPressEvent(QKeyEvent *event);
 
 private:
     mainchar *bomberman;

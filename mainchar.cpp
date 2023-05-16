@@ -22,10 +22,25 @@ void mainchar::Dead_Animation()
 void mainchar::keyPressEvent(QKeyEvent *event)
 {
     //Movement
+    if (event->key() == Qt::Key_W){
+        Set_Direction('u');
+        Move();
+    }
+    else if (event->key() == Qt::Key_S){
+        Set_Direction('d');
+        Move();
+    }
+    else if (event->key() == Qt::Key_A){
+        Set_Direction('l');
+        Move();
+    }
+    else if (event->key() == Qt::Key_D){
+        Set_Direction('r');
+        Move();
+    }
 
-
-    //Bomba (para bailar esto es una Bomba)
-    if(event->key()==Qt::Key_B){
+    //Bomba (para bailar esto es una)
+    if(event->key() == Qt::Key_B){
         //Bomba poner :)
     }
     else{
@@ -35,6 +50,11 @@ void mainchar::keyPressEvent(QKeyEvent *event)
 
 void mainchar::keyReleaseEvent(QKeyEvent *event)
 {
-
+    /*
+    if (event->key() == Qt::Key_W || event->key() == Qt::Key_S || event->key() == Qt::Key_A || event->key() == Qt::Key_D){
+        Set_isMoving(0);
+        Set_Direction('n');
+    }
+    */
 }
 
