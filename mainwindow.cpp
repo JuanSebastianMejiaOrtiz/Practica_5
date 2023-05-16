@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     nivel = new game;
 
-    nivel->setSceneRect(0,0,ui->graphicsView->width()-2,ui->graphicsView->height()-2);
+    nivel->setSceneRect(0, 0, ui->graphicsView->width()-2, ui->graphicsView->height()-2);
 
     ui->graphicsView->setScene(nivel);
 }

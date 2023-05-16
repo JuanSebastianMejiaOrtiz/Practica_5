@@ -7,13 +7,11 @@
 #include "character.h"
 #include "global_maincharacter.h"
 
-class mainchar
+class mainchar : public Character
 {
 public:
     mainchar();
     ~mainchar();
-
-    Character *mc;
 
     //Dead Animation
     void Dead_Animation();

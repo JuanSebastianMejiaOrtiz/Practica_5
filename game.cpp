@@ -4,8 +4,9 @@
 game::game()
 {
     bomberman = new mainchar();
-    addItem(bomberman->mc);
-    bomberman->mc->setPixmap(*(bomberman->mc->actual));
+    addItem(bomberman);
+    bomberman->Show_Sprite(1);
+    bomberman->setPos(0,0);
 }
 
 game::~game()

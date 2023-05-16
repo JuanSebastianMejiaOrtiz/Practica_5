@@ -1,20 +1,17 @@
 
 #include "mainchar.h"
 
-mainchar::mainchar()
+mainchar::mainchar() : Character(0, 0)
 {
-    //Inicializar variables
-    mc = new Character(pos_x_initial, pos_y_initial);
-
     //Obtain QPixmap full
     QPixmap imagen;
     imagen.load("://Recursos/Practica5_sprites.png");
-    *(mc->full) = imagen.copy(0, 0, ancho_mainchar*7, alto_mainchar*3);
+    *full = imagen.copy(0, 0, ancho_mainchar*7, alto_mainchar*3);
 }
 
 mainchar::~mainchar()
 {
-    delete mc;
+
 }
 
 void mainchar::Dead_Animation()
