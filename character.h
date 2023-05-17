@@ -28,8 +28,8 @@ public:
     void Set_Walk_Animation_Speed(short speed);
     short Get_Walk_Animation_Speed();
 
-    void Set_isMoving(bool VoF);
-    bool Get_isMoving();
+    void Set_isAlive(bool VoF);
+    bool Get_isAlive();
 
 protected:
     //Position Variables
@@ -37,7 +37,6 @@ protected:
     int *Pos_x;
     int *Pos_y;
     char *direction;
-    bool *isMoving;
 
     //Animation Variables
     short Walk_Animation_Speed;
@@ -49,6 +48,8 @@ protected:
     void Walk_Down_Animation();
     void Walk_Left_Animation();
     void Walk_Right_Animation();
+
+    bool *isAlive;
 
 private slots:
     //Animations

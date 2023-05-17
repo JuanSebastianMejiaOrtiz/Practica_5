@@ -6,6 +6,7 @@
 #include <QGraphicsPixmapItem>
 
 #include "mainchar.h"
+#include "wall.h"
 #include "global_macros.h"
 
 class game : public QGraphicsScene
@@ -18,6 +19,7 @@ public:
 
 private:
     mainchar *bomberman;
+    Wall *pared;
 };
 
 #endif // GAME_H

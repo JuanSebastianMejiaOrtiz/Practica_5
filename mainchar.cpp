@@ -48,13 +48,3 @@ void mainchar::keyPressEvent(QKeyEvent *event)
     }
 }
 
-void mainchar::keyReleaseEvent(QKeyEvent *event)
-{
-    /*
-    if (event->key() == Qt::Key_W || event->key() == Qt::Key_S || event->key() == Qt::Key_A || event->key() == Qt::Key_D){
-        Set_isMoving(0);
-        Set_Direction('n');
-    }
-    */
-}
-

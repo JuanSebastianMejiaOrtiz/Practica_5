@@ -17,8 +17,9 @@ public:
     void Dead_Animation();
     //Inputs
     void keyPressEvent(QKeyEvent *event);
-    void keyReleaseEvent(QKeyEvent *event);
+protected:
     //Bomba
+
 };
 
 #endif // MAINCHAR_H

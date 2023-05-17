@@ -8,7 +8,7 @@ Character::Character(int Start_Point_x, int Start_Point_y)
     Pos_y = new int;
     direction = new char;
     timer = new QTimer(this);
-    isMoving = new bool;
+    isAlive = new bool;
 
     //Ponerles valor default
     *Pos_x = Start_Point_x;
@@ -30,6 +30,7 @@ Character::~Character()
     delete Pos_y;
     delete direction;
     delete timer;
+    delete isAlive;
 }
 
 //Movement
@@ -88,14 +89,14 @@ int Character::Get_Pos_y()
     return *Pos_y;
 }
 
-void Character::Set_isMoving(bool VoF)
+void Character::Set_isAlive(bool LoD)
 {
-    *isMoving = VoF;
+    *isAlive = LoD;
 }
 
-bool Character::Get_isMoving()
+bool Character::Get_isAlive()
 {
-    return *isMoving;
+    return *isAlive;
 }
 
 //Animations
