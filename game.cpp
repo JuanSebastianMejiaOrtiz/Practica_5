@@ -7,7 +7,7 @@ game::game()
     bomberman->Select_sprite(4, 0);
     bomberman->Scale_sprite(Scale);
     bomberman->Show_Sprite(1);
-    bomberman->setPos(pos_x_initial, pos_y_initial);
+    //bomberman->setPos(pos_x_initial_mc, pos_y_initial_mc);
     addItem(bomberman);
 }
 

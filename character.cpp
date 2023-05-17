@@ -13,14 +13,14 @@ Character::Character(int Start_Point_x, int Start_Point_y)
     //Ponerles valor default
     *Pos_x = Start_Point_x;
     *Pos_y = Start_Point_y;
-    Movement_Speed = Walk_Speed;
-    isMoving = 0;
+    Movement_Speed = Walk_Speed_mc;
 
     //Animation
-    Walk_Animation_Speed = _Walk_Animation_Speed;
+    Walk_Animation_Speed = _Walk_Animation_Speed_mc;
     Walk_Animation_Actual_Frame = 0;
 
     //Inicializar timer
+    timer->start(Walk_Animation_Speed);
     connect(timer, SIGNAL(timeout()), this, SLOT(Walk_Animation()));
 }
 
@@ -30,7 +30,6 @@ Character::~Character()
     delete Pos_y;
     delete direction;
     delete timer;
-    delete isMoving;
 }
 
 //Movement
@@ -118,10 +117,11 @@ void Character::Walk_Animation()
 
 void Character::Walk_Up_Animation()
 {
-    if (Walk_Animation_Actual_Frame < Walk_Animation_Frame_Ammount){
-        Select_sprite( (Walk_Animation_Frame_Ammount+Walk_Animation_Actual_Frame), 1);
+    if (Walk_Animation_Actual_Frame < Walk_Animation_Frame_Ammount_mc){
+        Select_sprite( (Walk_Animation_Frame_Ammount_mc+Walk_Animation_Actual_Frame), 1);
         Scale_sprite(Scale);
         Show_Sprite(1);
+        Walk_Animation_Actual_Frame++;
     }
     else{
         timer->stop();
@@ -131,10 +131,11 @@ void Character::Walk_Up_Animation()
 
 void Character::Walk_Down_Animation()
 {
-    if (Walk_Animation_Actual_Frame < Walk_Animation_Frame_Ammount){
-        Select_sprite( (Walk_Animation_Frame_Ammount+Walk_Animation_Actual_Frame), 0);
+    if (Walk_Animation_Actual_Frame < Walk_Animation_Frame_Ammount_mc){
+        Select_sprite( (Walk_Animation_Frame_Ammount_mc+Walk_Animation_Actual_Frame), 0);
         Scale_sprite(Scale);
         Show_Sprite(1);
+        Walk_Animation_Actual_Frame++;
     }
     else{
         timer->stop();
@@ -144,10 +145,11 @@ void Character::Walk_Down_Animation()
 
 void Character::Walk_Left_Animation()
 {
-    if (Walk_Animation_Actual_Frame < Walk_Animation_Frame_Ammount){
+    if (Walk_Animation_Actual_Frame < Walk_Animation_Frame_Ammount_mc){
         Select_sprite( (Walk_Animation_Actual_Frame), 0);
         Scale_sprite(Scale);
         Show_Sprite(1);
+        Walk_Animation_Actual_Frame++;
     }
     else{
         timer->stop();
@@ -157,10 +159,11 @@ void Character::Walk_Left_Animation()
 
 void Character::Walk_Right_Animation()
 {
-    if (Walk_Animation_Actual_Frame < Walk_Animation_Frame_Ammount){
+    if (Walk_Animation_Actual_Frame < Walk_Animation_Frame_Ammount_mc){
         Select_sprite( (Walk_Animation_Actual_Frame), 1);
         Scale_sprite(Scale);
         Show_Sprite(1);
+        Walk_Animation_Actual_Frame++;
     }
     else{
         timer->stop();
