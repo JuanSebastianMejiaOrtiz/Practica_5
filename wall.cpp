@@ -20,7 +20,7 @@ Wall::Wall(int xPos, int yPos, bool Destructible)
     //Cargar Imagen Wall
     QPixmap img;
     img.load("://Recursos/Practica5_sprites.png");
-    *full = img.copy(bomb_ancho*bomb_charge_frame_ammount, alto_mainchar*number_lines_mc, wall_alto, wall_ancho);
+    *full = img.copy(bomb_ancho*bomb_charge_frame_ammount, alto_mainchar*number_lines_mc, wall_ancho*(wall_Destruction_Frame_Ammount+2), wall_alto);
 }
 
 Wall::~Wall()

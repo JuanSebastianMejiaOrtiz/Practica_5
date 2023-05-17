@@ -12,7 +12,7 @@ game::game()
     bomberman->Show_Sprite(1);
 
     //Set Pared
-    pared->Select_sprite(0,0);
+    pared->Select_sprite(3, 0);
     pared->Scale_sprite(Scale);
     pared->Show_Sprite(1);
     pared->setPos(pared->Get_Wall_Pos_x(), pared->Get_Wall_Pos_y());

@@ -12,7 +12,7 @@
     //Animation
 #define _Walk_Animation_Speed_mc 200
 #define Walk_Animation_Frame_Ammount_mc 3
-#define Dead_Animation_Speed_mc 500
+#define Dead_Animation_Speed_mc 200
 #define Dead_Animation_Frame_Ammount_mc 7
 
     //Medidas
@@ -21,16 +21,24 @@
 #define pos_x_initial_mc 0
 #define pos_y_initial_mc 0
 #define number_lines_mc 3
+#define number_cols_mc 7
 
 
 //Wall
+    //Animation
+#define wall_Destruction_Frame_Ammount 7
+#define walls_extra 2
+
+    //Medidas
 #define wall_alto 16
 #define wall_ancho 16
-#define wall_Destruction_Frame_Ammount 7
 
 
 //Bomb
+    //Animation
 #define bomb_charge_frame_ammount 3
+
+    //Medidas
 #define bomb_ancho 16
 #define bomb_alto 16
 
