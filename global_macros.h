@@ -38,6 +38,9 @@
 //Bomb
     //Animation
 #define bomb_charge_frame_ammount 3
+#define bomb_charge_animation_repeat 3
+#define bomb_Animation_Speed 400
+#define bomb_Cooldown (bomb_Animation_Speed * bomb_charge_frame_ammount * bomb_charge_animation_repeat)
 
     //Medidas
 #define bomb_ancho 16

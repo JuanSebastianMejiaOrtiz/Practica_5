@@ -32,27 +32,30 @@ public:
 
 protected:
     //Position Variables
-    int Movement_Speed; //Pixels
     int *Pos_x; //Character position in x
     int *Pos_y; //Character position in y
     char *direction; //u:up, d:down, r:right, l:left, n:none
 
-    //Movement Methods
-    void Movement();
+    //Other
+    bool *isAlive; //0:Dead, 1:Alive
+
+private:
+    //Position Variables
+    int Movement_Speed; //Pixels per cycle
 
     //Animation Variables
     short Walk_Animation_Speed; //1000: 1 second
-    short Walk_Animation_Actual_Frame; //private?
+    short Walk_Animation_Actual_Frame;
     QTimer *timer;
+
+    //Movement Methods
+    void Movement();
 
     //Animation Methods
     void Walk_Up_Animation();
     void Walk_Down_Animation();
     void Walk_Left_Animation();
     void Walk_Right_Animation();
-
-    //Other
-    bool *isAlive; //0:Dead, 1:Alive
 
 private slots:
     //Animations

@@ -27,119 +27,6 @@ void game::keyPressEvent(QKeyEvent *event)
     bomberman->keyPressEvent(event);
 }
 
-void game::Create_Memory_Limits()
-{
-    Limit_1 = new Wall(0,0,0);
-    Limit_2 = new Wall(0,0,0);
-    Limit_3 = new Wall(0,0,0);
-    Limit_4 = new Wall(0,0,0);
-    Limit_5 = new Wall(0,0,0);
-    Limit_6 = new Wall(0,0,0);
-    Limit_7 = new Wall(0,0,0);
-    Limit_8 = new Wall(0,0,0);
-    Limit_9 = new Wall(0,0,0);
-    Limit_10 = new Wall(0,0,0);
-    Limit_11 = new Wall(0,0,0);
-    Limit_12 = new Wall(0,0,0);
-    Limit_13 = new Wall(0,0,0);
-    Limit_14 = new Wall(0,0,0);
-    Limit_15 = new Wall(0,0,0);
-    Limit_16 = new Wall(0,0,0);
-    Limit_17 = new Wall(0,0,0);
-    Limit_18 = new Wall(0,0,0);
-    Limit_19 = new Wall(0,0,0);
-    Limit_20 = new Wall(0,0,0);
-    Limit_21 = new Wall(0,0,0);
-    Limit_22 = new Wall(0,0,0);
-    Limit_23 = new Wall(0,0,0);
-    Limit_24 = new Wall(0,0,0);
-    Limit_25 = new Wall(0,0,0);
-    Limit_26 = new Wall(0,0,0);
-    Limit_27 = new Wall(0,0,0);
-    Limit_28 = new Wall(0,0,0);
-    Limit_29 = new Wall(0,0,0);
-    Limit_30 = new Wall(0,0,0);
-    Limit_31 = new Wall(0,0,0);
-    Limit_32 = new Wall(0,0,0);
-    Limit_33 = new Wall(0,0,0);
-    Limit_34 = new Wall(0,0,0);
-    Limit_35 = new Wall(0,0,0);
-    Limit_36 = new Wall(0,0,0);
-    Limit_37 = new Wall(0,0,0);
-    Limit_38 = new Wall(0,0,0);
-    Limit_39 = new Wall(0,0,0);
-    Limit_40 = new Wall(0,0,0);
-    Limit_41 = new Wall(0,0,0);
-    Limit_42 = new Wall(0,0,0);
-    Limit_43 = new Wall(0,0,0);
-    Limit_44 = new Wall(0,0,0);
-    Limit_45 = new Wall(0,0,0);
-    Limit_46 = new Wall(0,0,0);
-    Limit_47 = new Wall(0,0,0);
-    Limit_48 = new Wall(0,0,0);
-    Limit_49 = new Wall(0,0,0);
-    Limit_50 = new Wall(0,0,0);
-    Limit_50 = new Wall(0,0,0);
-    Limit_51 = new Wall(0,0,0);
-    Limit_52 = new Wall(0,0,0);
-}
-
-void game::Delete_Memory_Limits()
-{
-    delete Limit_1;
-    delete Limit_2;
-    delete Limit_3;
-    delete Limit_4;
-    delete Limit_5;
-    delete Limit_6;
-    delete Limit_7;
-    delete Limit_8;
-    delete Limit_9;
-    delete Limit_10;
-    delete Limit_11;
-    delete Limit_12;
-    delete Limit_13;
-    delete Limit_14;
-    delete Limit_15;
-    delete Limit_16;
-    delete Limit_17;
-    delete Limit_18;
-    delete Limit_19;
-    delete Limit_20;
-    delete Limit_21;
-    delete Limit_22;
-    delete Limit_23;
-    delete Limit_24;
-    delete Limit_25;
-    delete Limit_26;
-    delete Limit_27;
-    delete Limit_28;
-    delete Limit_29;
-    delete Limit_30;
-    delete Limit_31;
-    delete Limit_32;
-    delete Limit_33;
-    delete Limit_34;
-    delete Limit_35;
-    delete Limit_36;
-    delete Limit_37;
-    delete Limit_38;
-    delete Limit_39;
-    delete Limit_40;
-    delete Limit_41;
-    delete Limit_42;
-    delete Limit_43;
-    delete Limit_44;
-    delete Limit_45;
-    delete Limit_46;
-    delete Limit_47;
-    delete Limit_48;
-    delete Limit_49;
-    delete Limit_50;
-    delete Limit_51;
-    delete Limit_52;
-}
-
 void game::SetMC()
 {
     //Set Bomberman
@@ -153,6 +40,25 @@ void game::SetMC()
 void game::SetWalls()
 {
     Create_Limits();
+}
+
+
+//Walls
+void game::Put_Walls_Sprite(Wall *Wall, int sprite_x, int sprite_y)
+{
+    Wall->Select_sprite(sprite_x, sprite_y);
+    Wall->Scale_sprite(Scale);
+    Wall->Show_Sprite(1);
+}
+
+void game::Set_Walls_Pos(Wall *Wall, int posx, int posy)
+{
+    int x = posx * wall_ancho * Scale;
+    int y = posy * wall_alto * Scale;
+
+    Wall->Set_Wall_Pos_x(x);
+    Wall->Set_Wall_Pos_y(y);
+    Wall->setPos(QPointF(Wall->Get_Wall_Pos_x(), Wall->Get_Wall_Pos_y()));
 }
 
 void game::Create_Limits()
@@ -269,23 +175,6 @@ void game::Create_Limits()
     Set_Walls_Pos(Limit_52, 15, 10);
 }
 
-void game::Put_Walls_Sprite(Wall *Wall, int sprite_x, int sprite_y)
-{
-    Wall->Select_sprite(sprite_x, sprite_y);
-    Wall->Scale_sprite(Scale);
-    Wall->Show_Sprite(1);
-}
-
-void game::Set_Walls_Pos(Wall *Wall, int posx, int posy)
-{
-    int x = posx * wall_ancho * Scale;
-    int y = posy * wall_alto * Scale;
-
-    Wall->Set_Wall_Pos_x(x);
-    Wall->Set_Wall_Pos_y(y);
-    Wall->setPos(QPointF(Wall->Get_Wall_Pos_x(), Wall->Get_Wall_Pos_y()));
-}
-
 void game::Add_Limits_to_Scene()
 {
     addItem(Limit_1);
@@ -340,4 +229,117 @@ void game::Add_Limits_to_Scene()
     addItem(Limit_50);
     addItem(Limit_51);
     addItem(Limit_52);
+}
+
+void game::Create_Memory_Limits()
+{
+    Limit_1 = new Wall(0,0,0);
+    Limit_2 = new Wall(0,0,0);
+    Limit_3 = new Wall(0,0,0);
+    Limit_4 = new Wall(0,0,0);
+    Limit_5 = new Wall(0,0,0);
+    Limit_6 = new Wall(0,0,0);
+    Limit_7 = new Wall(0,0,0);
+    Limit_8 = new Wall(0,0,0);
+    Limit_9 = new Wall(0,0,0);
+    Limit_10 = new Wall(0,0,0);
+    Limit_11 = new Wall(0,0,0);
+    Limit_12 = new Wall(0,0,0);
+    Limit_13 = new Wall(0,0,0);
+    Limit_14 = new Wall(0,0,0);
+    Limit_15 = new Wall(0,0,0);
+    Limit_16 = new Wall(0,0,0);
+    Limit_17 = new Wall(0,0,0);
+    Limit_18 = new Wall(0,0,0);
+    Limit_19 = new Wall(0,0,0);
+    Limit_20 = new Wall(0,0,0);
+    Limit_21 = new Wall(0,0,0);
+    Limit_22 = new Wall(0,0,0);
+    Limit_23 = new Wall(0,0,0);
+    Limit_24 = new Wall(0,0,0);
+    Limit_25 = new Wall(0,0,0);
+    Limit_26 = new Wall(0,0,0);
+    Limit_27 = new Wall(0,0,0);
+    Limit_28 = new Wall(0,0,0);
+    Limit_29 = new Wall(0,0,0);
+    Limit_30 = new Wall(0,0,0);
+    Limit_31 = new Wall(0,0,0);
+    Limit_32 = new Wall(0,0,0);
+    Limit_33 = new Wall(0,0,0);
+    Limit_34 = new Wall(0,0,0);
+    Limit_35 = new Wall(0,0,0);
+    Limit_36 = new Wall(0,0,0);
+    Limit_37 = new Wall(0,0,0);
+    Limit_38 = new Wall(0,0,0);
+    Limit_39 = new Wall(0,0,0);
+    Limit_40 = new Wall(0,0,0);
+    Limit_41 = new Wall(0,0,0);
+    Limit_42 = new Wall(0,0,0);
+    Limit_43 = new Wall(0,0,0);
+    Limit_44 = new Wall(0,0,0);
+    Limit_45 = new Wall(0,0,0);
+    Limit_46 = new Wall(0,0,0);
+    Limit_47 = new Wall(0,0,0);
+    Limit_48 = new Wall(0,0,0);
+    Limit_49 = new Wall(0,0,0);
+    Limit_50 = new Wall(0,0,0);
+    Limit_50 = new Wall(0,0,0);
+    Limit_51 = new Wall(0,0,0);
+    Limit_52 = new Wall(0,0,0);
+}
+
+void game::Delete_Memory_Limits()
+{
+    delete Limit_1;
+    delete Limit_2;
+    delete Limit_3;
+    delete Limit_4;
+    delete Limit_5;
+    delete Limit_6;
+    delete Limit_7;
+    delete Limit_8;
+    delete Limit_9;
+    delete Limit_10;
+    delete Limit_11;
+    delete Limit_12;
+    delete Limit_13;
+    delete Limit_14;
+    delete Limit_15;
+    delete Limit_16;
+    delete Limit_17;
+    delete Limit_18;
+    delete Limit_19;
+    delete Limit_20;
+    delete Limit_21;
+    delete Limit_22;
+    delete Limit_23;
+    delete Limit_24;
+    delete Limit_25;
+    delete Limit_26;
+    delete Limit_27;
+    delete Limit_28;
+    delete Limit_29;
+    delete Limit_30;
+    delete Limit_31;
+    delete Limit_32;
+    delete Limit_33;
+    delete Limit_34;
+    delete Limit_35;
+    delete Limit_36;
+    delete Limit_37;
+    delete Limit_38;
+    delete Limit_39;
+    delete Limit_40;
+    delete Limit_41;
+    delete Limit_42;
+    delete Limit_43;
+    delete Limit_44;
+    delete Limit_45;
+    delete Limit_46;
+    delete Limit_47;
+    delete Limit_48;
+    delete Limit_49;
+    delete Limit_50;
+    delete Limit_51;
+    delete Limit_52;
 }

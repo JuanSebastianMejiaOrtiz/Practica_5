@@ -23,6 +23,7 @@ public:
 
     void Set_Wall_Exist(bool exist); //0:Doesn't Exist, 1:Exist
     bool Get_Wall_Exist(); //0:Doesn't Exist, 1:Exist
+
 protected:
     int Wall_Pos_x; //Wall position in x
     int Wall_Pos_y; //Wall position in y
@@ -30,9 +31,13 @@ protected:
     bool *Wall_Exist; //0:Doesn't Exist, 1:Exist
 
     //Animations
-    short Wall_Destruction_Actual_Frame; //private?
-    short Wall_Destruction_Speed; //1000: 1 second
     QTimer *Wall_Time;
+
+private:
+    //Animations
+    short Wall_Destruction_Actual_Frame;
+    short Wall_Destruction_Speed; //1000: 1 second
+
 private slots:
     //Animations
     void Wall_Destruction_Animation();

@@ -3,11 +3,11 @@
 
 mainchar::mainchar() : Character(pos_x_initial_mc, pos_y_initial_mc)
 {
-    //Reservar memoria variables
+    //Set Memory for Atributes
     Dead_Timer = new QTimer;
     Dead_Actual_Frame = new int;
 
-    //Poner valores por defecto
+    //Set Default Values
     *Dead_Actual_Frame = 0;
 
     //Obtain QPixmap full

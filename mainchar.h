@@ -19,9 +19,13 @@ public:
 protected:
     //Dead_Animation
     QTimer *Dead_Timer;
-    int *Dead_Actual_Frame;
 
     //Bomb
+
+
+private:
+    //Dead_Animation
+    int *Dead_Actual_Frame;
 
 private slots:
     //Dead Animation
