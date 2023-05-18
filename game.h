@@ -19,10 +19,13 @@ public:
     void keyPressEvent(QKeyEvent *event);
 
 private:
+    //Main Character
     mainchar *bomberman;
 
-    //Muros
-        //Limites
+    void SetMC();
+
+    //Walls
+        //Limits
     Wall *Limit_1;
     Wall *Limit_2;
     Wall *Limit_3;
@@ -73,14 +76,18 @@ private:
     Wall *Limit_48;
     Wall *Limit_49;
     Wall *Limit_50;
+    Wall *Limit_51;
+    Wall *Limit_52;
 
-
-    void SetMC();
+    void Create_Memory_Limits();
+    void Delete_Memory_Limits();
     void SetWalls();
 
-    void Fill_Paredes(bool destructible);
+    void Put_Walls_Sprite(Wall *Wall, int sprite_x, int sprite_y);
+    void Set_Walls_Pos(Wall *Wall, int posx, int posy);
+
     void Create_Limits();
-    void Set_Limits_Pos();
+    void Add_Limits_to_Scene();
 
 };
 

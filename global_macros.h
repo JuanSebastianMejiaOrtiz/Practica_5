@@ -3,11 +3,11 @@
 #define GLOBAL_MACROS_H
 
 //General
-#define Scale 2
+#define Scale 3
 
 //Main Character (mc)
     //Movement
-#define Walk_Speed_mc 3
+#define Walk_Speed_mc 4
 
     //Animation
 #define _Walk_Animation_Speed_mc 200
@@ -18,8 +18,8 @@
     //Medidas
 #define alto_mainchar 16
 #define ancho_mainchar 16
-#define pos_x_initial_mc 32
-#define pos_y_initial_mc 32
+#define pos_x_initial_mc (wall_ancho*Scale)
+#define pos_y_initial_mc (wall_alto*Scale)
 #define number_lines_mc 3
 #define number_cols_mc 7
 
@@ -45,7 +45,7 @@
 
 
 //Map
-#define Limits_Wall_Quantity_x 100
-#define Limits_Wall_Quantity_y 38
+#define Limits_Wall_One_Side_Quantity_x 16
+#define Limits_Wall_One_Side_Quantity_y 12
 
 #endif // GLOBAL_MACROS_H

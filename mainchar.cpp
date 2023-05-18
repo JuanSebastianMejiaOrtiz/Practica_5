@@ -1,7 +1,7 @@
 
 #include "mainchar.h"
 
-mainchar::mainchar() : Character(0, 0)
+mainchar::mainchar() : Character(pos_x_initial_mc, pos_y_initial_mc)
 {
     //Reservar memoria variables
     Dead_Timer = new QTimer;

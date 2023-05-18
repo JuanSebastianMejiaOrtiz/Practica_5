@@ -78,7 +78,7 @@ void Wall::Wall_Destruction_Animation()
 {
     if (Get_Wall_Destructible()){
         if (Wall_Destruction_Actual_Frame < wall_Destruction_Frame_Ammount){
-            Select_sprite(Wall_Destruction_Actual_Frame, 0);
+            Select_sprite(Wall_Destruction_Actual_Frame + 1, 0);
             Scale_sprite(Scale);
             Show_Sprite(1);
             Wall_Destruction_Actual_Frame++;
