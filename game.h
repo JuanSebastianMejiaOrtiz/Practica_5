@@ -4,6 +4,7 @@
 
 #include <QGraphicsScene>
 #include <QGraphicsPixmapItem>
+#include <vector>
 
 #include "mainchar.h"
 #include "wall.h"
@@ -19,7 +20,15 @@ public:
 
 private:
     mainchar *bomberman;
-    Wall *pared;
+    std::vector<Wall> *paredes;
+
+    void SetMC();
+    void SetWalls();
+
+    void Fill_Paredes(bool destructible);
+    void Create_Limits();
+    void Set_Limits_Pos();
+
 };
 
 #endif // GAME_H

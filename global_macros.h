@@ -18,8 +18,8 @@
     //Medidas
 #define alto_mainchar 16
 #define ancho_mainchar 16
-#define pos_x_initial_mc 0
-#define pos_y_initial_mc 0
+#define pos_x_initial_mc 32
+#define pos_y_initial_mc 32
 #define number_lines_mc 3
 #define number_cols_mc 7
 
@@ -28,6 +28,7 @@
     //Animation
 #define wall_Destruction_Frame_Ammount 7
 #define walls_extra 2
+#define wall_Destruction_Speed 200
 
     //Medidas
 #define wall_alto 16
@@ -41,5 +42,10 @@
     //Medidas
 #define bomb_ancho 16
 #define bomb_alto 16
+
+
+//Map
+#define Limits_Wall_Quantity_x 100
+#define Limits_Wall_Quantity_y 38
 
 #endif // GLOBAL_MACROS_H
