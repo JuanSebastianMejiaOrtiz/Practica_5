@@ -64,6 +64,7 @@
 #define enemy_posy_block_initial 1
 #define enemy_pos_x_initial (wall_ancho * Scale * enemy_posx_block_initial)
 #define enemy_pos_y_initial (wall_alto * Scale * enemy_posy_block_initial)
+#define enemy_Speed 1
     //Animation
 #define enemy_Walk_Animation_Speed 200
 #define enemy_Walk_Animation_Frame_Ammount 3

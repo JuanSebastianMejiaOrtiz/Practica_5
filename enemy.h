@@ -13,15 +13,23 @@ public:
     ~enemy();
 
 protected:
+    //Movement
+    void Enemy_Movement();
+    //Animations
     QTimer *Dead_Timer;
+    void Enemy_Animation();
+    void Enemy_Animation_Left();
+    void Enemy_Animation_Right();
 
 private:
     int Enemy_Dead_Actual_Frame;
-    QTimer *Move_Timer;
+    QTimer *Enemy_Move_Timer;
+    QTimer *Change_Move_Timer;
 
 private slots:
     //Position
     void Enemy_Set_Direction();
+    void Enemy_Move();
 
     //Dead Animation
     void Dead_Animation();
