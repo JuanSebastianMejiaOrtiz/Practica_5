@@ -44,8 +44,8 @@
         //Bomb
 #define bomb_charge_frame_ammount 3
 #define bomb_charge_animation_repeat 3
-#define bomb_Animation_Speed 800
-#define bomb_Cooldown ((bomb_Animation_Speed * bomb_charge_frame_ammount * bomb_charge_animation_repeat) + (bomb_Animation_Speed * explosion_frame_ammount))
+#define bomb_Animation_Speed 1000
+#define bomb_Cooldown 6000
         //Explosion
 #define explosion_frame_ammount 4
 #define explosion_alto_frame_ammount 5
@@ -70,7 +70,7 @@
 #define enemy_Walk_Animation_Frame_Ammount 3
 #define enemy_Dead_Animation_Speed 300
 #define enemy_Dead_Animation_Frame_Ammount 5
-#define enemy_change_direction 6000
+#define enemy_change_direction 2000
     //Medidas
 #define enemy_ancho 16
 #define enemy_alto 16

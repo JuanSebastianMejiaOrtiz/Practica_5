@@ -42,12 +42,16 @@ game::~game()
 void game::keyPressEvent(QKeyEvent *event)
 {
     bomberman->keyPressEvent(event);
-
-    if (!(bomberman->bomba->Get_Already_Exist()) && (bomberman->bomba->Bomb_Cooldown->isActive())){
-        addItem(bomberman->bomba);
+    if (bomberman->bomba->Get_Already_Exist() && !(bomberman->bomba->bomb_timer->isActive())){
+        if (items().contains(bomberman->bomba)){
+            removeItem(bomberman->bomba);
+        }
+        bomberman->bomba->Set_Default_Values();
     }
-    else if ((bomberman->bomba->Get_Already_Exist()) && (bomberman->bomba->Bomb_Cooldown->isActive())){
-        removeItem(bomberman->bomba);
+    else if (!bomberman->bomba->Get_Already_Exist()){
+        if (!(items().contains(bomberman->bomba))){
+            addItem(bomberman->bomba);
+        }
     }
 }
 

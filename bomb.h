@@ -29,6 +29,7 @@ public:
     void Set_Default_Values();
 
     QTimer *Bomb_Cooldown;
+    QTimer *bomb_timer;
 
 private:
     //Position
@@ -36,35 +37,29 @@ private:
     int *Bomb_pos_y;
 
     //Animation Atributes
-        //Dudas de si es necesario
-    bool adjust_size_sprite;
         //Both
     bool kaboom; //0:no explosion, 1:explosion
-    QTimer *bomb_timer;
     int Bomb_Animation_Speed; //1000: 1 second
     int Bomb_Animation_Actual_Frame;
-        //Bomb
-    short Bomb_Animation_Moving_Repeat;
         //Explosion
-    bool end_explosion;
     int explosion_y;
     int explosion_x;
-    bool change_line;
-    QPixmap *Temp_Full;
+    QPixmap *Explosions;
 
     //Other
     bool *Already_Exist;
 
     //Animation Methods
-    void Boom();
     void Plant_Bomb();
     void kaboom1();
-    void kaboom2();
+
+    //Method for sprites
+    void Explosion_Select_Sprite(int _x, int _y);
 
 private slots:
     //Animation Explosion
-    void Kaboom();
-    void Bomb_Moving();
+    void Bomb_Animations();
+    void Bomb_Check_If_Can_Use();
 };
 
 #endif // BOMB_H

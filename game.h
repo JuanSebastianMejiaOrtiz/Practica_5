@@ -24,12 +24,10 @@ private:
     //Characters
         //Main Character
     mainchar *bomberman;
-
     void SetMC();
 
         //Enemy
     enemy *Enemy;
-
     void SetEnemy();
 
 

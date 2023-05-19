@@ -7,7 +7,7 @@ bomb::bomb()
     bomb_timer = new QTimer;
     Bomb_Cooldown = new QTimer;
     Already_Exist = new bool;
-    Temp_Full = new QPixmap;
+    Explosions = new QPixmap;
     Bomb_pos_x = new int;
     Bomb_pos_y = new int;
 
@@ -24,19 +24,15 @@ bomb::bomb()
     //Animation
     Bomb_Animation_Speed = bomb_Animation_Speed; //from global_macros.h
     Bomb_Animation_Actual_Frame = 0;
-    Bomb_Animation_Moving_Repeat = 0;
-    end_explosion = 0;
     explosion_x = 0;
     explosion_y = 0;
-    change_line = 0;
         //Other
     *Already_Exist = 0;
-    adjust_size_sprite = 0;
-    *Temp_Full = full->copy();
+    *Explosions = full->copy(0, bomb_alto, (explosion_ancho_frame_ammount * explosion_ancho_box), (explosion_alto_frame_ammount * explosion_alto_box));
 
     //Connect and Start bomb_timer
-    connect(Bomb_Cooldown, SIGNAL(timeout()), this, SLOT(Kaboom()));
-    connect(bomb_timer, SIGNAL(timeout()), this, SLOT(Bomb_Moving()));
+    connect(bomb_timer, SIGNAL(timeout()), this, SLOT(Bomb_Animations()));
+    connect(Bomb_Cooldown, SIGNAL(timeout()), this, SLOT(Bomb_Check_If_Can_Use()));
 }
 
 bomb::~bomb()
@@ -44,114 +40,71 @@ bomb::~bomb()
     delete bomb_timer;
     delete Already_Exist;
     delete Bomb_Cooldown;
-    delete Temp_Full;
+    delete Explosions;
 }
 
 
 //Animation Methods
-void bomb::Boom()
-{
-
-}
-
 void bomb::Plant_Bomb()
 {
-    if (Bomb_Animation_Moving_Repeat < bomb_charge_animation_repeat){
-        //Animation
-        if (Bomb_Animation_Actual_Frame < bomb_charge_frame_ammount){
+    //Animation
+    if (Bomb_Animation_Actual_Frame < bomb_charge_frame_ammount){
             Select_sprite(Bomb_Animation_Actual_Frame, 0);
             Scale_sprite(Scale);
             Show_Sprite(1);
             Bomb_Animation_Actual_Frame++;
-        }
-        else if (Bomb_Animation_Actual_Frame == bomb_charge_frame_ammount){
-            Bomb_Animation_Actual_Frame = 0;
-            Bomb_Animation_Moving_Repeat++;
-        }
     }
-    else{
+    else if (Bomb_Animation_Actual_Frame == bomb_charge_frame_ammount){
+        Bomb_Animation_Actual_Frame = 0;
         Set_kaboom(1);
     }
 }
 
 void bomb::kaboom1()
 {
-    if (!adjust_size_sprite){
-        adjust_size_sprite = 1;
-        *full = full->copy(0, bomb_alto, (explosion_ancho_frame_ammount * explosion_ancho_box), (explosion_alto_frame_ammount * explosion_alto_box));
-        Set_Width_Sprite(explosion_ancho_box * explosion_ancho_frame_ammount);
-        Set_Height_Sprite(explosion_alto_box * explosion_alto_frame_ammount);
-    }
     if (Bomb_Animation_Actual_Frame < explosion_frame_ammount){
-        Select_sprite(explosion_x, explosion_y);
+        Explosion_Select_Sprite(explosion_x, explosion_y);
         Scale_sprite(Scale);
         Show_Sprite(1);
 
-        if (Bomb_Animation_Actual_Frame+1 == explosion_frame_ammount/2){
-            explosion_y = 1;
-            explosion_x = 0;
-            change_line = 1;
-        }
-
         Bomb_Animation_Actual_Frame++;
-        if (!change_line){
-            explosion_x++;
-            change_line = 0;
+        explosion_x++;
+        if (explosion_x == explosion_frame_ammount && explosion_y < 1){
+            explosion_x = 0;
+            explosion_y++;
         }
     }
     else if (Bomb_Animation_Actual_Frame == explosion_frame_ammount){
-        end_explosion = 1;
-    }
-}
-
-void bomb::kaboom2()
-{
-    if (Bomb_Animation_Actual_Frame > 0){
-        Select_sprite(explosion_x, explosion_y);
-        Scale_sprite(Scale);
-        Show_Sprite(1);
-
-        if (Bomb_Animation_Actual_Frame-1 == explosion_frame_ammount/2){
-            explosion_y = 0;
-            explosion_x = 1;
-            change_line = 1;
-        }
-
-        Bomb_Animation_Actual_Frame--;
-        if (!change_line){
-            explosion_x = 0;
-            change_line = 0;
-        }
-
-    }
-    else if (Bomb_Animation_Actual_Frame == 0){
-        Bomb_Cooldown->stop();
         bomb_timer->stop();
     }
 }
 
-    //SLOTS
-void bomb::Kaboom()
+void bomb::Explosion_Select_Sprite(int _x, int _y)
 {
-    if (!end_explosion){
-        kaboom1();
-    }
-    else{
-        kaboom2();
-    }
-
+    int x = (_x * explosion_ancho_box) * explosion_ancho_frame_ammount;
+    int y = (_y * explosion_alto_box) * explosion_alto_frame_ammount;
+    int WIDTH = explosion_ancho_frame_ammount * explosion_ancho_box;
+    int HEIGHT = explosion_alto_frame_ammount * explosion_alto_box;
+    *actual = Explosions->copy(x, y, WIDTH, HEIGHT);
 }
 
-void bomb::Bomb_Moving()
+    //SLOTS
+void bomb::Bomb_Animations()
 {
     if (!Get_kaboom()){
         Plant_Bomb();
     }
     else{
-        Kaboom();
+        kaboom1();
     }
 }
 
+void bomb::Bomb_Check_If_Can_Use(){
+    if (!Get_Already_Exist()){
+        bomb_timer->start();
+        Set_Already_Exist(1);
+    }
+}
 
 //Set and Get Methods
     //kaboom
@@ -191,13 +144,8 @@ int bomb::Get_Bomb_pos_y(){
 
 void bomb::Set_Default_Values(){
     kaboom = 0;
-    end_explosion = 0;
     Bomb_Animation_Actual_Frame = 0;
     explosion_x = 0;
     explosion_y = 0;
-    change_line = 0;
-    *full = Temp_Full->copy();
-    Set_Height_Sprite(bomb_alto);
-    Set_Width_Sprite(bomb_ancho);
     Already_Exist = 0;
 }
