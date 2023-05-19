@@ -14,7 +14,7 @@ enemy::enemy() : Character(enemy_pos_x_initial, (enemy_posy_block_initial * enem
     //Obtain QPixmap full
     QPixmap imagen;
     int x = 0;
-    int y = (number_lines_mc * alto_mainchar) + bomb_alto + (explosion_alto_box * explosion_alto_frame_ammount) + PowerUp_alto;
+    int y = (number_lines_mc * alto_mainchar) + bomb_alto + (explosion_alto_box * explosion_alto_frame_ammount * 2) + PowerUp_alto;
     int WIDTH = ((enemy_Walk_Animation_Frame_Ammount * 2) + enemy_Dead_Animation_Frame_Ammount) * enemy_ancho;
     int HEIGHT = (enemy_Quantity * enemy_alto);
     imagen.load("://Recursos/Practica5_sprites.png");
