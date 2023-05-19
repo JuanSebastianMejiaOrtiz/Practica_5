@@ -39,3 +39,23 @@ void control_sprite::Show_Sprite(bool appear)
     else setVisible(0);
 }
 
+void control_sprite::Set_Width_Sprite(int width)
+{
+    *width_sprite = width;
+}
+
+int control_sprite::Get_Width_Sprite()
+{
+    return *width_sprite;
+}
+
+void control_sprite::Set_Height_Sprite(int height)
+{
+    *height_sprite = height;
+}
+
+int control_sprite::Get_Height_Sprite()
+{
+    return *height_sprite;
+}
+

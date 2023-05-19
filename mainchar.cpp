@@ -6,6 +6,7 @@ mainchar::mainchar() : Character(pos_x_initial_mc, pos_y_initial_mc)
     //Set Memory for Atributes
     Dead_Timer = new QTimer;
     Dead_Actual_Frame = new int;
+    bomba = new bomb;
 
     //Set Default Values
     *Dead_Actual_Frame = 0;
@@ -49,9 +50,9 @@ void mainchar::keyPressEvent(QKeyEvent *event)
         //Bomba (para bailar esto es una)
         if(event->key() == Qt::Key_B){
             //Bomba poner :)
-        }
-        else{
-            //No Bomba poner :(
+            if (!bomba->Get_Already_Exist()){
+                bomba->Bomb_Cooldown->start();
+            }
         }
     }
 }

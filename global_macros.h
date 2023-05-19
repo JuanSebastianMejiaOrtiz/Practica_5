@@ -37,14 +37,22 @@
 
 //Bomb
     //Animation
+        //Bomb
 #define bomb_charge_frame_ammount 3
 #define bomb_charge_animation_repeat 3
 #define bomb_Animation_Speed 400
 #define bomb_Cooldown (bomb_Animation_Speed * bomb_charge_frame_ammount * bomb_charge_animation_repeat)
+        //Explosion
+#define explosion_Animation_Speed 200
+#define explosion_frame_ammount 4
+#define explosion_alto_frame_ammount 5
+#define explosion_ancho_frame_ammount 5
 
     //Medidas
 #define bomb_ancho 16
 #define bomb_alto 16
+#define explosion_ancho_box 16
+#define explosion_alto_box 16
 
 
 //Map

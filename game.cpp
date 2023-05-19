@@ -25,6 +25,9 @@ game::~game()
 void game::keyPressEvent(QKeyEvent *event)
 {
     bomberman->keyPressEvent(event);
+    if (bomberman->bomba->Get_Already_Exist() && (!(bomberman->bomba->isActive()))){
+        addItem(bomberman->bomba);
+    }
 }
 
 void game::SetMC()

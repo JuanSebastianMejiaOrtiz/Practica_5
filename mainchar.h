@@ -5,6 +5,7 @@
 #include <QKeyEvent>
 
 #include "character.h"
+#include "bomb.h"
 #include "global_macros.h"
 
 class mainchar : public Character
@@ -16,12 +17,13 @@ public:
 
     //Inputs
     void keyPressEvent(QKeyEvent *event);
+
+    //Bomb
+    bomb *bomba;
+
 protected:
     //Dead_Animation
     QTimer *Dead_Timer;
-
-    //Bomb
-
 
 private:
     //Dead_Animation
