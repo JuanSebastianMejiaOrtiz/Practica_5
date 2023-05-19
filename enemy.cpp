@@ -4,9 +4,12 @@
 enemy::enemy() : Character(enemy_pos_x_initial, (enemy_posy_block_initial * enemy_pos_y_initial))
 {
     //Assign Memory for Attributes
+    Dead_Timer = new QTimer;
+    Move_Timer = new QTimer;
 
     //Set Default Values
     Enemy_Dead_Actual_Frame = 0;
+    Set_Direction('l');
 
     //Obtain QPixmap full
     QPixmap imagen;
@@ -18,13 +21,26 @@ enemy::enemy() : Character(enemy_pos_x_initial, (enemy_posy_block_initial * enem
     *full = imagen.copy(x, y, WIDTH, HEIGHT);
 
     //Connect and Start Timer
-    connect(&Dead_Timer, SIGNAL(timeout()), this, SLOT(Dead_Animation()));
-    Dead_Timer.start();
+    connect(Dead_Timer, SIGNAL(timeout()), this, SLOT(Dead_Animation()));
+    connect(Move_Timer, SIGNAL(timeout()), this, SLOT(Enemy_Set_Direction()));
+    Dead_Timer->start(enemy_Dead_Animation_Speed);
+    Move_Timer->start(enemy_change_direction);
 }
 
-void enemy::Set_Direction()
+enemy::~enemy()
 {
+    delete Dead_Timer;
+    delete Move_Timer;
+}
 
+void enemy::Enemy_Set_Direction()
+{
+    if (Get_Direction() == 'l'){
+        Set_Direction('r');
+    }
+    else if (Get_Direction() == 'r'){
+        Set_Direction('l');
+    }
 }
 
 void enemy::Dead_Animation()
@@ -37,7 +53,7 @@ void enemy::Dead_Animation()
             Enemy_Dead_Actual_Frame++;
         }
         else if (Enemy_Dead_Actual_Frame == enemy_Dead_Animation_Frame_Ammount){
-            Dead_Timer.stop();
+            Dead_Timer->stop();
             Enemy_Dead_Actual_Frame = 0;
             Show_Sprite(0);
         }

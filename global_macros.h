@@ -69,6 +69,7 @@
 #define enemy_Walk_Animation_Frame_Ammount 3
 #define enemy_Dead_Animation_Speed 300
 #define enemy_Dead_Animation_Frame_Ammount 5
+#define enemy_change_direction 2000
     //Medidas
 #define enemy_ancho 16
 #define enemy_alto 16
