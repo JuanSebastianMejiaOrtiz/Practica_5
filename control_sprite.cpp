@@ -3,11 +3,13 @@
 
 control_sprite::control_sprite()
 {
+    //Assign Memory for Attributes
     full = new QPixmap;
     actual = new QPixmap;
     width_sprite = new int;
     height_sprite = new int;
 
+    //Set Default Values
     *width_sprite = 16;
     *height_sprite = 16;
 }

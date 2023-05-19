@@ -3,14 +3,14 @@
 
 Character::Character(int Start_Point_x, int Start_Point_y)
 {
-    //Asignar memoria
+    //Assign Memory for Attributes
     Pos_x = new int;
     Pos_y = new int;
     direction = new char;
     timer = new QTimer(this);
     isAlive = new bool;
 
-    //Ponerles valor default
+    //Set Default Values
     *Pos_x = Start_Point_x;
     *Pos_y = Start_Point_y;
     Movement_Speed = Walk_Speed_mc;

@@ -3,8 +3,12 @@
 
 game::game()
 {
-    //Asignar memoria
+    //Assign Memory for Attributes
+    //Characters
+        //Main Character
     bomberman = new mainchar();
+        //Enemy
+    Enemy = new enemy();
         //Walls
     Create_Memory_Limits();
     Create_Memory_Walls();
@@ -12,12 +16,14 @@ game::game()
 
     //Set and Add Items
     SetMC();
+    SetEnemy();
     SetWalls();
 }
 
 game::~game()
 {
     delete bomberman;
+    delete Enemy;
     //Walls
         //Limits
     Delete_Memory_Limits();
@@ -39,6 +45,8 @@ void game::keyPressEvent(QKeyEvent *event)
     //}
 }
 
+
+//Private
 void game::SetMC()
 {
     //Set Bomberman
@@ -46,7 +54,15 @@ void game::SetMC()
     bomberman->Scale_sprite(Scale);
     bomberman->Show_Sprite(1);
     addItem(bomberman);
-    bomberman->setPos(QPointF(pos_x_initial_mc, pos_y_initial_mc));
+    bomberman->setPos(QPointF(bomberman->Get_Pos_x(), bomberman->Get_Pos_y()));
+}
+
+void game::SetEnemy(){
+    Enemy->Select_sprite(0, 0);
+    Enemy->Scale_sprite(Scale);
+    Enemy->Show_Sprite(1);
+    addItem(Enemy);
+    Enemy->setPos(QPointF((Enemy->Get_Pos_x()), Enemy->Get_Pos_y()));
 }
 
 void game::SetWalls()

@@ -4,19 +4,19 @@
 
 Wall::Wall(int xPos, int yPos, bool Destructible)
 {
-    //Inicializar variables
+    //Assign Memory for Attributes
     Wall_Destructible = new bool;
     Wall_Exist = new bool;
     Wall_Time = new QTimer;
 
-    //Ponerles valores default
+    //Set Default Values
     Set_Wall_Pos_x(xPos*wall_ancho*2);
     Set_Wall_Pos_y(yPos*wall_alto*2);
     Set_Wall_Destructible(Destructible);
     Set_Wall_Exist(1);
     Wall_Destruction_Speed = wall_Destruction_Speed;
 
-    //Cargar Imagen Wall
+    //Load Imagen Wall
     QPixmap img;
     img.load("://Recursos/Practica5_sprites.png");
     *full = img.copy(bomb_ancho*bomb_charge_frame_ammount, alto_mainchar*number_lines_mc, wall_ancho*(wall_Destruction_Frame_Ammount+2), wall_alto);

@@ -3,7 +3,7 @@
 
 bomb::bomb()
 {
-    //Set Memory for Atributes
+    //Assign Memory for Attributes
     bomb_timer = new QTimer;
     Bomb_Cooldown = new QTimer;
     Already_Exist = new bool;

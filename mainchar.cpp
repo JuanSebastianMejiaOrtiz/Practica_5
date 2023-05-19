@@ -3,13 +3,12 @@
 
 mainchar::mainchar() : Character(pos_x_initial_mc, pos_y_initial_mc)
 {
-    //Set Memory for Atributes
+    //Assign Memory for Attributes
     //Dead_Timer = new QTimer;
-    Dead_Actual_Frame = new int;
     bomba = new bomb;
 
     //Set Default Values
-    *Dead_Actual_Frame = 0;
+    Dead_Actual_Frame = 0;
 
     //Obtain QPixmap full
     QPixmap imagen;
@@ -69,16 +68,16 @@ void mainchar::keyPressEvent(QKeyEvent *event)
 void mainchar::Dead_Animation()
 {
     if (!Get_isAlive()){
-        if (*Dead_Actual_Frame < Dead_Animation_Frame_Ammount_mc){
-            Select_sprite(*Dead_Actual_Frame, 2);
+        if (Dead_Actual_Frame < Dead_Animation_Frame_Ammount_mc){
+            Select_sprite(Dead_Actual_Frame, 2);
             Scale_sprite(Scale);
             Show_Sprite(1);
-            (*Dead_Actual_Frame)++;
+            Dead_Actual_Frame++;
         }
-        else if (*Dead_Actual_Frame == Dead_Animation_Frame_Ammount_mc){
+        else if (Dead_Actual_Frame == Dead_Animation_Frame_Ammount_mc){
             //Dead_Timer->stop();
             Dead_Timer.stop();
-            *Dead_Actual_Frame = 0;
+            Dead_Actual_Frame = 0;
             Show_Sprite(0);
         }
     }

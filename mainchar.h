@@ -27,7 +27,7 @@ protected:
 
 private:
     //Dead_Animation
-    int *Dead_Actual_Frame;
+    int Dead_Actual_Frame;
 
 private slots:
     //Dead Animation

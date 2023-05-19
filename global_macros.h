@@ -54,8 +54,26 @@
 #define explosion_alto_box 16
 
 
-//Map
-#define Limits_Wall_One_Side_Quantity_x 16
-#define Limits_Wall_One_Side_Quantity_y 12
+//Enemy
+    //Position
+#define enemy_posx_block_initial 8
+#define enemy_posy_block_initial 8
+#define enemy_pos_x_initial (wall_ancho * Scale)
+#define enemy_pos_y_initial (wall_alto * Scale)
+    //Animation
+#define enemy_Walk_Animation_Speed 200
+#define enemy_Walk_Animation_Frame_Ammount 3
+#define enemy_Dead_Animation_Speed 300
+#define enemy_Dead_Animation_Frame_Ammount 5
+    //Medidas
+#define enemy_ancho 16
+#define enemy_alto 16
+    //Other
+#define enemy_Quantity 8
+
+
+//PowerUps
+#define PowerUp_alto 16
+#define PowerUp_ancho 16
 
 #endif // GLOBAL_MACROS_H

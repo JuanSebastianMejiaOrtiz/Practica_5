@@ -7,6 +7,7 @@
 
 #include "mainchar.h"
 #include "wall.h"
+#include "enemy.h"
 #include "global_macros.h"
 
 class game : public QGraphicsScene
@@ -17,11 +18,20 @@ public:
 
     void keyPressEvent(QKeyEvent *event);
 
+    void Check_Collisions();
+
 private:
-    //Main Character
+    //Characters
+        //Main Character
     mainchar *bomberman;
 
     void SetMC();
+
+        //Enemy
+    enemy *Enemy;
+
+    void SetEnemy();
+
 
     //Walls
         //Limits
@@ -136,6 +146,16 @@ private:
 
     void Create_Inside_Walls();
     void Add_Inside_Walls_to_Scene();
+
+
+    //Collisions
+        //Walls with Characters
+    void Walls_with_character(Character *chara);
+        //Walls with Bombs
+    void Walls_with_bomb(bomb *boom);
+    void bomb_not_throught_walls(bomb *boom);
+    void Walls_with_explosion(bomb *boom);
+
 
 };
 
