@@ -23,7 +23,7 @@ public:
 
 protected:
     //Dead_Animation
-    QTimer *Dead_Timer;
+    QTimer Dead_Timer;
 
 private:
     //Dead_Animation

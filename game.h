@@ -4,7 +4,6 @@
 
 #include <QGraphicsScene>
 #include <QGraphicsPixmapItem>
-#include <vector>
 
 #include "mainchar.h"
 #include "wall.h"
@@ -78,9 +77,55 @@ private:
     Wall *Limit_50;
     Wall *Limit_51;
     Wall *Limit_52;
+        //Inside Walls
+    Wall *wall_1;
+    Wall *wall_2;
+    Wall *wall_3;
+    Wall *wall_4;
+    Wall *wall_5;
+    Wall *wall_6;
+    Wall *wall_7;
+    Wall *wall_8;
+    Wall *wall_9;
+    Wall *wall_10;
+    Wall *wall_11;
+    Wall *wall_12;
+    Wall *wall_13;
+    Wall *wall_14;
+    Wall *wall_15;
+    Wall *wall_16;
+    Wall *wall_17;
+    Wall *wall_18;
+    Wall *wall_19;
+    Wall *wall_20;
+    Wall *wall_21;
+    Wall *wall_22;
+    Wall *wall_23;
+    Wall *wall_24;
+    Wall *wall_25;
+    Wall *wall_26;
+    Wall *wall_27;
+    Wall *wall_28;
+    Wall *wall_29;
+    Wall *wall_30;
+    Wall *wall_31;
+    Wall *wall_32;
+    Wall *wall_33;
+    Wall *wall_34;
+    Wall *wall_35;
+    Wall *wall_36;
+    Wall *wall_37;
+    Wall *wall_38;
+    Wall *wall_39;
+    Wall *wall_40;
 
+        //Create Memory Walls
     void Create_Memory_Limits();
+    void Create_Memory_Walls();
+        //Delete Memory Walls
     void Delete_Memory_Limits();
+    void Delete_Memory_Walls();
+        //Set Walls
     void SetWalls();
 
     void Put_Walls_Sprite(Wall *Wall, int sprite_x, int sprite_y);
@@ -88,6 +133,9 @@ private:
 
     void Create_Limits();
     void Add_Limits_to_Scene();
+
+    void Create_Inside_Walls();
+    void Add_Inside_Walls_to_Scene();
 
 };
 

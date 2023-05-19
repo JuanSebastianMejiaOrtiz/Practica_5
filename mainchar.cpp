@@ -4,7 +4,7 @@
 mainchar::mainchar() : Character(pos_x_initial_mc, pos_y_initial_mc)
 {
     //Set Memory for Atributes
-    Dead_Timer = new QTimer;
+    //Dead_Timer = new QTimer;
     Dead_Actual_Frame = new int;
     bomba = new bomb;
 
@@ -17,13 +17,15 @@ mainchar::mainchar() : Character(pos_x_initial_mc, pos_y_initial_mc)
     *full = imagen.copy(0, 0, ancho_mainchar*number_cols_mc, alto_mainchar*number_lines_mc);
 
     //Connect and Start Dead_Timer
-    connect(Dead_Timer, SIGNAL(timeout()), this, SLOT(Dead_Animation()));
-    Dead_Timer->start(Dead_Animation_Speed_mc);
+    //connect(Dead_Timer, SIGNAL(timeout()), this, SLOT(Dead_Animation()));
+    //Dead_Timer->start(Dead_Animation_Speed_mc);
+    connect(&Dead_Timer, SIGNAL(timeout()), this, SLOT(Dead_Animation()));
+    Dead_Timer.start(Dead_Animation_Speed_mc);
 }
 
 mainchar::~mainchar()
 {
-    delete Dead_Timer;
+    //delete Dead_Timer;
 }
 
 void mainchar::keyPressEvent(QKeyEvent *event)
@@ -51,7 +53,14 @@ void mainchar::keyPressEvent(QKeyEvent *event)
         if(event->key() == Qt::Key_B){
             //Bomba poner :)
             if (!bomba->Get_Already_Exist()){
-                bomba->Bomb_Cooldown->start();
+                //Change pos bomb
+                bomba->Set_Bomb_pos_x(Get_Pos_x() - (explosion_ancho_box)*Scale);
+                bomba->Set_Bomb_pos_y(Get_Pos_y());
+                bomba->setPos(QPointF(bomba->Get_Bomb_pos_x(), bomba->Get_Bomb_pos_y()));
+                //Kaboom
+                //bomba->Bomb_Cooldown->start();
+                bomba->Bomb_Cooldown->start(bomb_Animation_Speed);
+
             }
         }
     }
@@ -67,7 +76,8 @@ void mainchar::Dead_Animation()
             (*Dead_Actual_Frame)++;
         }
         else if (*Dead_Actual_Frame == Dead_Animation_Frame_Ammount_mc){
-            Dead_Timer->stop();
+            //Dead_Timer->stop();
+            Dead_Timer.stop();
             *Dead_Actual_Frame = 0;
             Show_Sprite(0);
         }

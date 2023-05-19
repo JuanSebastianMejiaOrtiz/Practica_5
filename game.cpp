@@ -7,6 +7,8 @@ game::game()
     bomberman = new mainchar();
         //Walls
     Create_Memory_Limits();
+    Create_Memory_Walls();
+
 
     //Set and Add Items
     SetMC();
@@ -19,15 +21,22 @@ game::~game()
     //Walls
         //Limits
     Delete_Memory_Limits();
+        //Inside Walls
+    Delete_Memory_Walls();
 
 }
 
 void game::keyPressEvent(QKeyEvent *event)
 {
     bomberman->keyPressEvent(event);
-    if (bomberman->bomba->Get_Already_Exist() && (!(bomberman->bomba->isActive()))){
-        addItem(bomberman->bomba);
-    }
+
+    //if (!(bomberman->bomba->Get_Already_Exist()) && (bomberman->bomba->Bomb_Cooldown->isActive())){
+    //    addItem(bomberman->bomba);
+    //}
+    //else if ((bomberman->bomba->Get_Already_Exist()) && (bomberman->bomba->Bomb_Cooldown->isActive())){
+    //    removeItem(bomberman->bomba);
+    //    bomberman->bomba->Set_Default_Values();
+    //}
 }
 
 void game::SetMC()
@@ -43,6 +52,7 @@ void game::SetMC()
 void game::SetWalls()
 {
     Create_Limits();
+    Create_Inside_Walls();
 }
 
 
@@ -178,6 +188,96 @@ void game::Create_Limits()
     Set_Walls_Pos(Limit_52, 15, 10);
 }
 
+void game::Create_Inside_Walls(){
+    //Indestructible
+    Put_Walls_Sprite(wall_1, 0, 0);
+    Put_Walls_Sprite(wall_2, 0, 0);
+    Put_Walls_Sprite(wall_3, 0, 0);
+    Put_Walls_Sprite(wall_4, 0, 0);
+    Put_Walls_Sprite(wall_5, 0, 0);
+    Put_Walls_Sprite(wall_6, 0, 0);
+    Put_Walls_Sprite(wall_7, 0, 0);
+    Put_Walls_Sprite(wall_8, 0, 0);
+    Put_Walls_Sprite(wall_9, 0, 0);
+    Put_Walls_Sprite(wall_10, 0, 0);
+    Put_Walls_Sprite(wall_11, 0, 0);
+    Put_Walls_Sprite(wall_12, 0, 0);
+    Put_Walls_Sprite(wall_13, 0, 0);
+    Put_Walls_Sprite(wall_14, 0, 0);
+    Put_Walls_Sprite(wall_15, 0, 0);
+    Put_Walls_Sprite(wall_16, 0, 0);
+    Put_Walls_Sprite(wall_17, 0, 0);
+    Put_Walls_Sprite(wall_18, 0, 0);
+    Put_Walls_Sprite(wall_19, 0, 0);
+    Put_Walls_Sprite(wall_20, 0, 0);
+    //Destructible
+    Put_Walls_Sprite(wall_21, 1, 0);
+    Put_Walls_Sprite(wall_22, 1, 0);
+    Put_Walls_Sprite(wall_23, 1, 0);
+    Put_Walls_Sprite(wall_24, 1, 0);
+    Put_Walls_Sprite(wall_25, 1, 0);
+    Put_Walls_Sprite(wall_26, 1, 0);
+    Put_Walls_Sprite(wall_27, 1, 0);
+    Put_Walls_Sprite(wall_28, 1, 0);
+    Put_Walls_Sprite(wall_29, 1, 0);
+    Put_Walls_Sprite(wall_30, 1, 0);
+    Put_Walls_Sprite(wall_31, 1, 0);
+    Put_Walls_Sprite(wall_32, 1, 0);
+    Put_Walls_Sprite(wall_33, 1, 0);
+    Put_Walls_Sprite(wall_34, 1, 0);
+    Put_Walls_Sprite(wall_35, 1, 0);
+    Put_Walls_Sprite(wall_36, 1, 0);
+    Put_Walls_Sprite(wall_37, 1, 0);
+    Put_Walls_Sprite(wall_38, 1, 0);
+    Put_Walls_Sprite(wall_39, 1, 0);
+    Put_Walls_Sprite(wall_40, 1, 0);
+
+    Add_Inside_Walls_to_Scene();
+
+    //Indestructible
+    Set_Walls_Pos(wall_1, 2, 2);
+    Set_Walls_Pos(wall_2, 4, 2);
+    Set_Walls_Pos(wall_3, 6, 2);
+    Set_Walls_Pos(wall_4, 8, 2);
+    Set_Walls_Pos(wall_5, 10, 2);
+    Set_Walls_Pos(wall_6, 12, 2);
+    Set_Walls_Pos(wall_7, 14, 2);
+    Set_Walls_Pos(wall_8, 3, 4);
+    Set_Walls_Pos(wall_9, 5, 4);
+    Set_Walls_Pos(wall_10, 7, 4);
+    Set_Walls_Pos(wall_11, 9, 4);
+    Set_Walls_Pos(wall_12, 11, 4);
+    Set_Walls_Pos(wall_13, 13, 4);
+    Set_Walls_Pos(wall_14, 15, 4);
+    Set_Walls_Pos(wall_15, 1, 6);
+    Set_Walls_Pos(wall_16, 1, 8);
+    Set_Walls_Pos(wall_17, 4, 6);
+    Set_Walls_Pos(wall_18, 4, 8);
+    Set_Walls_Pos(wall_19, 7, 6);
+    Set_Walls_Pos(wall_20, 7, 8);
+    //Destructible
+    Set_Walls_Pos(wall_21, 3, 1);
+    Set_Walls_Pos(wall_22, 1, 3);
+    Set_Walls_Pos(wall_23, 1, 4);
+    Set_Walls_Pos(wall_24, 2, 5);
+    Set_Walls_Pos(wall_25, 10, 6);
+    Set_Walls_Pos(wall_26, 14, 9);
+    Set_Walls_Pos(wall_27, 7, 3);
+    Set_Walls_Pos(wall_28, 3, 7);
+    Set_Walls_Pos(wall_29, 11, 2);
+    Set_Walls_Pos(wall_30, 14, 1);
+    Set_Walls_Pos(wall_31, 9, 2);
+    Set_Walls_Pos(wall_32, 6, 6);
+    Set_Walls_Pos(wall_33, 11, 10);
+    Set_Walls_Pos(wall_34, 3, 9);
+    Set_Walls_Pos(wall_35, 5, 10);
+    Set_Walls_Pos(wall_36, 12, 8);
+    Set_Walls_Pos(wall_37, 8, 6);
+    Set_Walls_Pos(wall_38, 8, 7);
+    Set_Walls_Pos(wall_39, 8, 9);
+    Set_Walls_Pos(wall_40, 9, 9);
+}
+
 void game::Add_Limits_to_Scene()
 {
     addItem(Limit_1);
@@ -234,61 +334,192 @@ void game::Add_Limits_to_Scene()
     addItem(Limit_52);
 }
 
+void game::Add_Inside_Walls_to_Scene(){
+    addItem(wall_1);
+    addItem(wall_2);
+    addItem(wall_3);
+    addItem(wall_4);
+    addItem(wall_5);
+    addItem(wall_6);
+    addItem(wall_7);
+    addItem(wall_8);
+    addItem(wall_9);
+    addItem(wall_10);
+    addItem(wall_11);
+    addItem(wall_12);
+    addItem(wall_13);
+    addItem(wall_14);
+    addItem(wall_15);
+    addItem(wall_16);
+    addItem(wall_17);
+    addItem(wall_18);
+    addItem(wall_19);
+    addItem(wall_20);
+    addItem(wall_21);
+    addItem(wall_22);
+    addItem(wall_23);
+    addItem(wall_24);
+    addItem(wall_25);
+    addItem(wall_26);
+    addItem(wall_27);
+    addItem(wall_28);
+    addItem(wall_29);
+    addItem(wall_30);
+    addItem(wall_31);
+    addItem(wall_32);
+    addItem(wall_33);
+    addItem(wall_34);
+    addItem(wall_35);
+    addItem(wall_36);
+    addItem(wall_37);
+    addItem(wall_38);
+    addItem(wall_39);
+    addItem(wall_40);
+}
+
 void game::Create_Memory_Limits()
 {
-    Limit_1 = new Wall(0,0,0);
-    Limit_2 = new Wall(0,0,0);
-    Limit_3 = new Wall(0,0,0);
-    Limit_4 = new Wall(0,0,0);
-    Limit_5 = new Wall(0,0,0);
-    Limit_6 = new Wall(0,0,0);
-    Limit_7 = new Wall(0,0,0);
-    Limit_8 = new Wall(0,0,0);
-    Limit_9 = new Wall(0,0,0);
-    Limit_10 = new Wall(0,0,0);
-    Limit_11 = new Wall(0,0,0);
-    Limit_12 = new Wall(0,0,0);
-    Limit_13 = new Wall(0,0,0);
-    Limit_14 = new Wall(0,0,0);
-    Limit_15 = new Wall(0,0,0);
-    Limit_16 = new Wall(0,0,0);
-    Limit_17 = new Wall(0,0,0);
-    Limit_18 = new Wall(0,0,0);
-    Limit_19 = new Wall(0,0,0);
-    Limit_20 = new Wall(0,0,0);
-    Limit_21 = new Wall(0,0,0);
-    Limit_22 = new Wall(0,0,0);
-    Limit_23 = new Wall(0,0,0);
-    Limit_24 = new Wall(0,0,0);
-    Limit_25 = new Wall(0,0,0);
-    Limit_26 = new Wall(0,0,0);
-    Limit_27 = new Wall(0,0,0);
-    Limit_28 = new Wall(0,0,0);
-    Limit_29 = new Wall(0,0,0);
-    Limit_30 = new Wall(0,0,0);
-    Limit_31 = new Wall(0,0,0);
-    Limit_32 = new Wall(0,0,0);
-    Limit_33 = new Wall(0,0,0);
-    Limit_34 = new Wall(0,0,0);
-    Limit_35 = new Wall(0,0,0);
-    Limit_36 = new Wall(0,0,0);
-    Limit_37 = new Wall(0,0,0);
-    Limit_38 = new Wall(0,0,0);
-    Limit_39 = new Wall(0,0,0);
-    Limit_40 = new Wall(0,0,0);
-    Limit_41 = new Wall(0,0,0);
-    Limit_42 = new Wall(0,0,0);
-    Limit_43 = new Wall(0,0,0);
-    Limit_44 = new Wall(0,0,0);
-    Limit_45 = new Wall(0,0,0);
-    Limit_46 = new Wall(0,0,0);
-    Limit_47 = new Wall(0,0,0);
-    Limit_48 = new Wall(0,0,0);
-    Limit_49 = new Wall(0,0,0);
-    Limit_50 = new Wall(0,0,0);
-    Limit_50 = new Wall(0,0,0);
-    Limit_51 = new Wall(0,0,0);
-    Limit_52 = new Wall(0,0,0);
+    Limit_1 = new Wall(0, 0, 0);
+    Limit_2 = new Wall(0, 0, 0);
+    Limit_3 = new Wall(0, 0, 0);
+    Limit_4 = new Wall(0, 0, 0);
+    Limit_5 = new Wall(0, 0, 0);
+    Limit_6 = new Wall(0, 0, 0);
+    Limit_7 = new Wall(0, 0, 0);
+    Limit_8 = new Wall(0, 0, 0);
+    Limit_9 = new Wall(0, 0, 0);
+    Limit_10 = new Wall(0, 0, 0);
+    Limit_11 = new Wall(0, 0, 0);
+    Limit_12 = new Wall(0, 0, 0);
+    Limit_13 = new Wall(0, 0, 0);
+    Limit_14 = new Wall(0, 0, 0);
+    Limit_15 = new Wall(0, 0, 0);
+    Limit_16 = new Wall(0, 0, 0);
+    Limit_17 = new Wall(0, 0, 0);
+    Limit_18 = new Wall(0, 0, 0);
+    Limit_19 = new Wall(0, 0, 0);
+    Limit_20 = new Wall(0, 0, 0);
+    Limit_21 = new Wall(0, 0, 0);
+    Limit_22 = new Wall(0, 0, 0);
+    Limit_23 = new Wall(0, 0, 0);
+    Limit_24 = new Wall(0, 0, 0);
+    Limit_25 = new Wall(0, 0, 0);
+    Limit_26 = new Wall(0, 0, 0);
+    Limit_27 = new Wall(0, 0, 0);
+    Limit_28 = new Wall(0, 0, 0);
+    Limit_29 = new Wall(0, 0, 0);
+    Limit_30 = new Wall(0, 0, 0);
+    Limit_31 = new Wall(0, 0, 0);
+    Limit_32 = new Wall(0, 0, 0);
+    Limit_33 = new Wall(0, 0, 0);
+    Limit_34 = new Wall(0, 0, 0);
+    Limit_35 = new Wall(0, 0, 0);
+    Limit_36 = new Wall(0, 0, 0);
+    Limit_37 = new Wall(0, 0, 0);
+    Limit_38 = new Wall(0, 0, 0);
+    Limit_39 = new Wall(0, 0, 0);
+    Limit_40 = new Wall(0, 0, 0);
+    Limit_41 = new Wall(0, 0, 0);
+    Limit_42 = new Wall(0, 0, 0);
+    Limit_43 = new Wall(0, 0, 0);
+    Limit_44 = new Wall(0, 0, 0);
+    Limit_45 = new Wall(0, 0, 0);
+    Limit_46 = new Wall(0, 0, 0);
+    Limit_47 = new Wall(0, 0, 0);
+    Limit_48 = new Wall(0, 0, 0);
+    Limit_49 = new Wall(0, 0, 0);
+    Limit_50 = new Wall(0, 0, 0);
+    Limit_50 = new Wall(0, 0, 0);
+    Limit_51 = new Wall(0, 0, 0);
+    Limit_52 = new Wall(0, 0, 0);
+}
+
+void game::Create_Memory_Walls(){
+    //Indestructible
+    wall_1 = new Wall(0, 0, 0);
+    wall_2 = new Wall(0, 0, 0);
+    wall_3 = new Wall(0, 0, 0);
+    wall_4 = new Wall(0, 0, 0);
+    wall_5 = new Wall(0, 0, 0);
+    wall_6 = new Wall(0, 0, 0);
+    wall_7 = new Wall(0, 0, 0);
+    wall_8 = new Wall(0, 0, 0);
+    wall_9 = new Wall(0, 0, 0);
+    wall_10 = new Wall(0, 0, 0);
+    wall_11 = new Wall(0, 0, 0);
+    wall_12 = new Wall(0, 0, 0);
+    wall_13 = new Wall(0, 0, 0);
+    wall_14 = new Wall(0, 0, 0);
+    wall_15 = new Wall(0, 0, 0);
+    wall_16 = new Wall(0, 0, 0);
+    wall_17 = new Wall(0, 0, 0);
+    wall_18 = new Wall(0, 0, 0);
+    wall_19 = new Wall(0, 0, 0);
+    wall_20 = new Wall(0, 0, 0);
+    //Destructible
+    wall_21 = new Wall(0, 0, 1);
+    wall_22 = new Wall(0, 0, 1);
+    wall_23 = new Wall(0, 0, 1);
+    wall_24 = new Wall(0, 0, 1);
+    wall_25 = new Wall(0, 0, 1);
+    wall_26 = new Wall(0, 0, 1);
+    wall_27 = new Wall(0, 0, 1);
+    wall_28 = new Wall(0, 0, 1);
+    wall_29 = new Wall(0, 0, 1);
+    wall_30 = new Wall(0, 0, 1);
+    wall_31 = new Wall(0, 0, 1);
+    wall_32 = new Wall(0, 0, 1);
+    wall_33 = new Wall(0, 0, 1);
+    wall_34 = new Wall(0, 0, 1);
+    wall_35 = new Wall(0, 0, 1);
+    wall_36 = new Wall(0, 0, 1);
+    wall_37 = new Wall(0, 0, 1);
+    wall_38 = new Wall(0, 0, 1);
+    wall_39 = new Wall(0, 0, 1);
+    wall_40 = new Wall(0, 0, 1);
+}
+
+void game::Delete_Memory_Walls(){
+    delete wall_1;
+    delete wall_2;
+    delete wall_3;
+    delete wall_4;
+    delete wall_5;
+    delete wall_6;
+    delete wall_7;
+    delete wall_8;
+    delete wall_9;
+    delete wall_10;
+    delete wall_11;
+    delete wall_12;
+    delete wall_13;
+    delete wall_14;
+    delete wall_15;
+    delete wall_16;
+    delete wall_17;
+    delete wall_18;
+    delete wall_19;
+    delete wall_20;
+    delete wall_21;
+    delete wall_22;
+    delete wall_23;
+    delete wall_24;
+    delete wall_25;
+    delete wall_26;
+    delete wall_27;
+    delete wall_28;
+    delete wall_29;
+    delete wall_30;
+    delete wall_31;
+    delete wall_32;
+    delete wall_33;
+    delete wall_34;
+    delete wall_35;
+    delete wall_36;
+    delete wall_37;
+    delete wall_38;
+    delete wall_39;
+    delete wall_40;
 }
 
 void game::Delete_Memory_Limits()

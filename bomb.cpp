@@ -7,16 +7,9 @@ bomb::bomb()
     bomb_timer = new QTimer;
     Bomb_Cooldown = new QTimer;
     Already_Exist = new bool;
-
-    //Set Default Values
-        //Animation
-    Bomb_Animation_Speed = bomb_Animation_Speed; //from global_macros.h
-    Bomb_Animation_Actual_Frame = 0;
-    Bomb_Animation_Moving_Repeat = 0;
-    end_explosion = 0;
-        //Other
-    *Already_Exist = 0;
-    adjust_size_sprite = 0;
+    Temp_Full = new QPixmap;
+    Bomb_pos_x = new int;
+    Bomb_pos_y = new int;
 
     //Set Sprite
     QPixmap imagen;
@@ -27,6 +20,20 @@ bomb::bomb()
     imagen.load("://Recursos/Practica5_sprites.png");
     *full = imagen.copy(x, y, WIDTH, HEIGHT);
 
+    //Set Default Values
+    //Animation
+    Bomb_Animation_Speed = bomb_Animation_Speed; //from global_macros.h
+    Bomb_Animation_Actual_Frame = 0;
+    Bomb_Animation_Moving_Repeat = 0;
+    end_explosion = 0;
+    explosion_x = 0;
+    explosion_y = 0;
+    change_line = 0;
+        //Other
+    *Already_Exist = 0;
+    adjust_size_sprite = 0;
+    *Temp_Full = *full;
+
     //Connect and Start bomb_timer
     connect(Bomb_Cooldown, SIGNAL(timeout()), this, SLOT(Kaboom()));
     connect(bomb_timer, SIGNAL(timeout()), this, SLOT(Bomb_Moving()));
@@ -36,6 +43,8 @@ bomb::~bomb()
 {
     delete bomb_timer;
     delete Already_Exist;
+    delete Bomb_Cooldown;
+    delete Temp_Full;
 }
 
 
@@ -69,12 +78,9 @@ void bomb::kaboom1()
 {
     if (!adjust_size_sprite){
         adjust_size_sprite = 1;
-        *actual = actual->copy(0, bomb_alto, (explosion_ancho_frame_ammount * explosion_ancho_box), (explosion_alto_frame_ammount * explosion_alto_box));
+        *full = full->copy(0, bomb_alto, (explosion_ancho_frame_ammount * explosion_ancho_box), (explosion_alto_frame_ammount * explosion_alto_box));
         Set_Width_Sprite(explosion_ancho_box * explosion_ancho_frame_ammount);
         Set_Height_Sprite(explosion_alto_box * explosion_alto_frame_ammount);
-        explosion_x = 0;
-        explosion_y = 0;
-        change_line = 0;
     }
     if (Bomb_Animation_Actual_Frame < explosion_frame_ammount){
         Select_sprite(explosion_x, explosion_y);
@@ -119,7 +125,6 @@ void bomb::kaboom2()
 
     }
     else if (Bomb_Animation_Actual_Frame == 0){
-        end_explosion = 0;
         Bomb_Cooldown->stop();
         bomb_timer->stop();
     }
@@ -168,3 +173,31 @@ bool bomb::Get_Already_Exist(){
     return *Already_Exist;
 }
 
+void bomb::Set_Bomb_pos_x(int x){
+    *Bomb_pos_x = x;
+}
+
+int bomb::Get_Bomb_pos_x(){
+    return *Bomb_pos_x;
+}
+
+void bomb::Set_Bomb_pos_y(int y){
+    *Bomb_pos_y = y;
+}
+
+int bomb::Get_Bomb_pos_y(){
+    return *Bomb_pos_y;
+}
+
+void bomb::Set_Default_Values(){
+    kaboom = 0;
+    end_explosion = 0;
+    Bomb_Animation_Actual_Frame = 0;
+    explosion_x = 0;
+    explosion_y = 0;
+    change_line = 0;
+    *full = Temp_Full->copy();
+    Set_Height_Sprite(bomb_alto);
+    Set_Width_Sprite(bomb_ancho);
+    Already_Exist = 0;
+}
