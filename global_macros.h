@@ -44,7 +44,7 @@
         //Bomb
 #define bomb_charge_frame_ammount 3
 #define bomb_charge_animation_repeat 3
-#define bomb_Animation_Speed 400
+#define bomb_Animation_Speed 800
 #define bomb_Cooldown ((bomb_Animation_Speed * bomb_charge_frame_ammount * bomb_charge_animation_repeat) + (bomb_Animation_Speed * explosion_frame_ammount))
         //Explosion
 #define explosion_frame_ammount 4
