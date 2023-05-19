@@ -1,7 +1,7 @@
 
 #include "character.h"
 
-Character::Character(int Start_Point_x, int Start_Point_y)
+Character::Character(int Start_Point_x, int Start_Point_y, bool moe)
 {
     //Assign Memory for Attributes
     Pos_x = new int;
@@ -15,6 +15,7 @@ Character::Character(int Start_Point_x, int Start_Point_y)
     *Pos_y = Start_Point_y;
     Movement_Speed = Walk_Speed_mc;
     *isAlive = 1;
+    MOE = moe;
 
     //Animation
     Walk_Animation_Speed = _Walk_Animation_Speed_mc;
@@ -107,72 +108,84 @@ bool Character::Get_isAlive()
 void Character::Walk_Animation()
 {
     if (Get_Direction() == 'u'){
-        Walk_Up_Animation();
+        Walk_Up_Animation(MOE);
     }
     else if (Get_Direction() == 'd'){
-        Walk_Down_Animation();
+        Walk_Down_Animation(MOE);
     }
     else if (Get_Direction() == 'l'){
-        Walk_Left_Animation();
+        Walk_Left_Animation(MOE);
     }
     else if (Get_Direction() == 'r'){
-        Walk_Right_Animation();
+        Walk_Right_Animation(MOE);
     }
 }
 
-void Character::Walk_Up_Animation()
+void Character::Walk_Up_Animation(bool moe)
 {
-    if (Walk_Animation_Actual_Frame < Walk_Animation_Frame_Ammount_mc){
-        Select_sprite( (Walk_Animation_Frame_Ammount_mc+Walk_Animation_Actual_Frame), 1);
-        Scale_sprite(Scale);
-        Show_Sprite(1);
-        Walk_Animation_Actual_Frame++;
+    if(moe){
+        if (Walk_Animation_Actual_Frame < Walk_Animation_Frame_Ammount_mc){
+            Select_sprite( (Walk_Animation_Frame_Ammount_mc+Walk_Animation_Actual_Frame), 1);
+            Scale_sprite(Scale);
+            Show_Sprite(1);
+            Walk_Animation_Actual_Frame++;
+        }
+        else{
+            timer->stop();
+            Walk_Animation_Actual_Frame = 0;
+        }
     }
-    else{
-        timer->stop();
-        Walk_Animation_Actual_Frame = 0;
-    }
+    else Walk_Right_Animation(moe);
 }
 
-void Character::Walk_Down_Animation()
+void Character::Walk_Down_Animation(bool moe)
 {
-    if (Walk_Animation_Actual_Frame < Walk_Animation_Frame_Ammount_mc){
-        Select_sprite( (Walk_Animation_Frame_Ammount_mc+Walk_Animation_Actual_Frame), 0);
-        Scale_sprite(Scale);
-        Show_Sprite(1);
-        Walk_Animation_Actual_Frame++;
+    if(moe){
+        if (Walk_Animation_Actual_Frame < Walk_Animation_Frame_Ammount_mc){
+            Select_sprite( (Walk_Animation_Frame_Ammount_mc+Walk_Animation_Actual_Frame), 0);
+            Scale_sprite(Scale);
+            Show_Sprite(1);
+            Walk_Animation_Actual_Frame++;
+        }
+        else{
+            timer->stop();
+            Walk_Animation_Actual_Frame = 0;
+        }
     }
-    else{
-        timer->stop();
-        Walk_Animation_Actual_Frame = 0;
-    }
+    else Walk_Left_Animation(moe);
 }
 
-void Character::Walk_Left_Animation()
+void Character::Walk_Left_Animation(bool moe)
 {
-    if (Walk_Animation_Actual_Frame < Walk_Animation_Frame_Ammount_mc){
-        Select_sprite( (Walk_Animation_Actual_Frame), 0);
-        Scale_sprite(Scale);
-        Show_Sprite(1);
-        Walk_Animation_Actual_Frame++;
+    if(moe){
+        if (Walk_Animation_Actual_Frame < Walk_Animation_Frame_Ammount_mc){
+            Select_sprite( (Walk_Animation_Actual_Frame), 0);
+            Scale_sprite(Scale);
+            Show_Sprite(1);
+            Walk_Animation_Actual_Frame++;
+        }
+        else{
+            timer->stop();
+            Walk_Animation_Actual_Frame = 0;
+        }
     }
-    else{
-        timer->stop();
-        Walk_Animation_Actual_Frame = 0;
-    }
+    else Walk_Down_Animation (moe);
 }
 
-void Character::Walk_Right_Animation()
+void Character::Walk_Right_Animation(bool moe)
 {
-    if (Walk_Animation_Actual_Frame < Walk_Animation_Frame_Ammount_mc){
-        Select_sprite( (Walk_Animation_Actual_Frame), 1);
-        Scale_sprite(Scale);
-        Show_Sprite(1);
-        Walk_Animation_Actual_Frame++;
+    if(moe){
+        if (Walk_Animation_Actual_Frame < Walk_Animation_Frame_Ammount_mc){
+            Select_sprite( (Walk_Animation_Actual_Frame), 1);
+            Scale_sprite(Scale);
+            Show_Sprite(1);
+            Walk_Animation_Actual_Frame++;
+        }
+        else{
+            timer->stop();
+            Walk_Animation_Actual_Frame = 0;
+        }
     }
-    else{
-        timer->stop();
-        Walk_Animation_Actual_Frame = 0;
-    }
+
 }
 

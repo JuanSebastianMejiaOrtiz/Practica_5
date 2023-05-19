@@ -9,7 +9,7 @@ class Character : public control_sprite
 {
     Q_OBJECT
 public:
-    Character(int Start_Point_x, int Start_Point_y);
+    Character(int Start_Point_x, int Start_Point_y, bool moe);
     ~Character();
 
     //Movement
@@ -38,6 +38,7 @@ protected:
 
     //Other
     bool *isAlive; //0:Dead, 1:Alive
+    bool MOE;
 
 private:
     //Position Variables
@@ -52,10 +53,10 @@ private:
     void Movement();
 
     //Animation Methods
-    void Walk_Up_Animation();
-    void Walk_Down_Animation();
-    void Walk_Left_Animation();
-    void Walk_Right_Animation();
+    void Walk_Up_Animation(bool moe);
+    void Walk_Down_Animation(bool moe);
+    void Walk_Left_Animation(bool moe);
+    void Walk_Right_Animation(bool moe);
 
 private slots:
     //Animations

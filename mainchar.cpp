@@ -1,7 +1,7 @@
 
 #include "mainchar.h"
 
-mainchar::mainchar() : Character(pos_x_initial_mc, pos_y_initial_mc)
+mainchar::mainchar() : Character(pos_x_initial_mc, pos_y_initial_mc, 1)
 {
     //Assign Memory for Attributes
     //Dead_Timer = new QTimer;

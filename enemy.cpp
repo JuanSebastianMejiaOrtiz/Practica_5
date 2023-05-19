@@ -1,7 +1,7 @@
 
 #include "enemy.h"
 
-enemy::enemy() : Character(enemy_pos_x_initial, (enemy_posy_block_initial * enemy_pos_y_initial))
+enemy::enemy() : Character(enemy_pos_x_initial, (enemy_posy_block_initial * enemy_pos_y_initial), 0)
 {
     //Assign Memory for Attributes
     Dead_Timer = new QTimer;
@@ -41,6 +41,7 @@ void enemy::Enemy_Set_Direction()
     else if (Get_Direction() == 'r'){
         Set_Direction('l');
     }
+    Move();
 }
 
 void enemy::Dead_Animation()

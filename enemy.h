@@ -7,6 +7,7 @@
 
 class enemy : public Character
 {
+    Q_OBJECT
 public:
     enemy();
     ~enemy();
