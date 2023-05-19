@@ -2,8 +2,6 @@
 #ifndef ENEMY_H
 #define ENEMY_H
 
-#include <random>
-
 #include "character.h"
 #include "global_macros.h"
 
