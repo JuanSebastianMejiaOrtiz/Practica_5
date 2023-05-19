@@ -4,24 +4,31 @@
 game::game()
 {
     //Assign Memory for Attributes
-    //Characters
-        //Main Character
+        //Characters
+            //Main Character
     bomberman = new mainchar();
-        //Enemy
+            //Enemy
     Enemy = new enemy();
         //Walls
     Create_Memory_Limits();
     Create_Memory_Walls();
+        //Collisions
+    Checking = new QTimer;
 
 
     //Set and Add Items
     SetMC();
     SetEnemy();
     SetWalls();
+
+    //Connect and Start Timer
+    connect(Checking, SIGNAL(timeout()), this, SLOT(Check_Collisions()));
+    Checking->start(Check);
 }
 
 game::~game()
 {
+    delete Checking;
     delete bomberman;
     delete Enemy;
     //Walls
@@ -45,6 +52,228 @@ void game::keyPressEvent(QKeyEvent *event)
     //}
 }
 
+void game::Check_Collisions()
+{
+    Check_with_mc();
+    Check_with_enemy();
+}
+
+void game::Check_with_mc(){
+    //With Walls
+        //Limits
+    Walls_with_character(bomberman, Limit_1);
+    Walls_with_character(bomberman, Limit_2);
+    Walls_with_character(bomberman, Limit_3);
+    Walls_with_character(bomberman, Limit_4);
+    Walls_with_character(bomberman, Limit_5);
+    Walls_with_character(bomberman, Limit_6);
+    Walls_with_character(bomberman, Limit_7);
+    Walls_with_character(bomberman, Limit_8);
+    Walls_with_character(bomberman, Limit_9);
+    Walls_with_character(bomberman, Limit_10);
+    Walls_with_character(bomberman, Limit_11);
+    Walls_with_character(bomberman, Limit_12);
+    Walls_with_character(bomberman, Limit_13);
+    Walls_with_character(bomberman, Limit_14);
+    Walls_with_character(bomberman, Limit_15);
+    Walls_with_character(bomberman, Limit_16);
+    Walls_with_character(bomberman, Limit_17);
+    Walls_with_character(bomberman, Limit_18);
+    Walls_with_character(bomberman, Limit_19);
+    Walls_with_character(bomberman, Limit_20);
+    Walls_with_character(bomberman, Limit_21);
+    Walls_with_character(bomberman, Limit_22);
+    Walls_with_character(bomberman, Limit_23);
+    Walls_with_character(bomberman, Limit_24);
+    Walls_with_character(bomberman, Limit_25);
+    Walls_with_character(bomberman, Limit_26);
+    Walls_with_character(bomberman, Limit_27);
+    Walls_with_character(bomberman, Limit_28);
+    Walls_with_character(bomberman, Limit_29);
+    Walls_with_character(bomberman, Limit_30);
+    Walls_with_character(bomberman, Limit_31);
+    Walls_with_character(bomberman, Limit_32);
+    Walls_with_character(bomberman, Limit_33);
+    Walls_with_character(bomberman, Limit_34);
+    Walls_with_character(bomberman, Limit_35);
+    Walls_with_character(bomberman, Limit_36);
+    Walls_with_character(bomberman, Limit_37);
+    Walls_with_character(bomberman, Limit_38);
+    Walls_with_character(bomberman, Limit_39);
+    Walls_with_character(bomberman, Limit_40);
+    Walls_with_character(bomberman, Limit_41);
+    Walls_with_character(bomberman, Limit_42);
+    Walls_with_character(bomberman, Limit_43);
+    Walls_with_character(bomberman, Limit_44);
+    Walls_with_character(bomberman, Limit_45);
+    Walls_with_character(bomberman, Limit_46);
+    Walls_with_character(bomberman, Limit_47);
+    Walls_with_character(bomberman, Limit_48);
+    Walls_with_character(bomberman, Limit_49);
+    Walls_with_character(bomberman, Limit_50);
+    Walls_with_character(bomberman, Limit_51);
+    Walls_with_character(bomberman, Limit_52);
+        //Inside Walls
+    Walls_with_character(bomberman, wall_1);
+    Walls_with_character(bomberman, wall_2);
+    Walls_with_character(bomberman, wall_3);
+    Walls_with_character(bomberman, wall_4);
+    Walls_with_character(bomberman, wall_5);
+    Walls_with_character(bomberman, wall_6);
+    Walls_with_character(bomberman, wall_7);
+    Walls_with_character(bomberman, wall_8);
+    Walls_with_character(bomberman, wall_9);
+    Walls_with_character(bomberman, wall_10);
+    Walls_with_character(bomberman, wall_11);
+    Walls_with_character(bomberman, wall_12);
+    Walls_with_character(bomberman, wall_13);
+    Walls_with_character(bomberman, wall_14);
+    Walls_with_character(bomberman, wall_15);
+    Walls_with_character(bomberman, wall_16);
+    Walls_with_character(bomberman, wall_17);
+    Walls_with_character(bomberman, wall_18);
+    Walls_with_character(bomberman, wall_19);
+    Walls_with_character(bomberman, wall_20);
+    Walls_with_character(bomberman, wall_21);
+    Walls_with_character(bomberman, wall_22);
+    Walls_with_character(bomberman, wall_23);
+    Walls_with_character(bomberman, wall_24);
+    Walls_with_character(bomberman, wall_25);
+    Walls_with_character(bomberman, wall_26);
+    Walls_with_character(bomberman, wall_27);
+    Walls_with_character(bomberman, wall_28);
+    Walls_with_character(bomberman, wall_29);
+    Walls_with_character(bomberman, wall_30);
+    Walls_with_character(bomberman, wall_31);
+    Walls_with_character(bomberman, wall_32);
+    Walls_with_character(bomberman, wall_33);
+    Walls_with_character(bomberman, wall_34);
+    Walls_with_character(bomberman, wall_35);
+    Walls_with_character(bomberman, wall_36);
+    Walls_with_character(bomberman, wall_37);
+    Walls_with_character(bomberman, wall_38);
+    Walls_with_character(bomberman, wall_39);
+    Walls_with_character(bomberman, wall_40);
+}
+
+void game::Check_with_enemy(){
+    //With Walls
+    //Limits
+    Walls_with_character(Enemy, Limit_1);
+    Walls_with_character(Enemy, Limit_2);
+    Walls_with_character(Enemy, Limit_3);
+    Walls_with_character(Enemy, Limit_4);
+    Walls_with_character(Enemy, Limit_5);
+    Walls_with_character(Enemy, Limit_6);
+    Walls_with_character(Enemy, Limit_7);
+    Walls_with_character(Enemy, Limit_8);
+    Walls_with_character(Enemy, Limit_9);
+    Walls_with_character(Enemy, Limit_10);
+    Walls_with_character(Enemy, Limit_11);
+    Walls_with_character(Enemy, Limit_12);
+    Walls_with_character(Enemy, Limit_13);
+    Walls_with_character(Enemy, Limit_14);
+    Walls_with_character(Enemy, Limit_15);
+    Walls_with_character(Enemy, Limit_16);
+    Walls_with_character(Enemy, Limit_17);
+    Walls_with_character(Enemy, Limit_18);
+    Walls_with_character(Enemy, Limit_19);
+    Walls_with_character(Enemy, Limit_20);
+    Walls_with_character(Enemy, Limit_21);
+    Walls_with_character(Enemy, Limit_22);
+    Walls_with_character(Enemy, Limit_23);
+    Walls_with_character(Enemy, Limit_24);
+    Walls_with_character(Enemy, Limit_25);
+    Walls_with_character(Enemy, Limit_26);
+    Walls_with_character(Enemy, Limit_27);
+    Walls_with_character(Enemy, Limit_28);
+    Walls_with_character(Enemy, Limit_29);
+    Walls_with_character(Enemy, Limit_30);
+    Walls_with_character(Enemy, Limit_31);
+    Walls_with_character(Enemy, Limit_32);
+    Walls_with_character(Enemy, Limit_33);
+    Walls_with_character(Enemy, Limit_34);
+    Walls_with_character(Enemy, Limit_35);
+    Walls_with_character(Enemy, Limit_36);
+    Walls_with_character(Enemy, Limit_37);
+    Walls_with_character(Enemy, Limit_38);
+    Walls_with_character(Enemy, Limit_39);
+    Walls_with_character(Enemy, Limit_40);
+    Walls_with_character(Enemy, Limit_41);
+    Walls_with_character(Enemy, Limit_42);
+    Walls_with_character(Enemy, Limit_43);
+    Walls_with_character(Enemy, Limit_44);
+    Walls_with_character(Enemy, Limit_45);
+    Walls_with_character(Enemy, Limit_46);
+    Walls_with_character(Enemy, Limit_47);
+    Walls_with_character(Enemy, Limit_48);
+    Walls_with_character(Enemy, Limit_49);
+    Walls_with_character(Enemy, Limit_50);
+    Walls_with_character(Enemy, Limit_51);
+    Walls_with_character(Enemy, Limit_52);
+        //Inside Walls
+    Walls_with_character(Enemy, wall_1);
+    Walls_with_character(Enemy, wall_2);
+    Walls_with_character(Enemy, wall_3);
+    Walls_with_character(Enemy, wall_4);
+    Walls_with_character(Enemy, wall_5);
+    Walls_with_character(Enemy, wall_6);
+    Walls_with_character(Enemy, wall_7);
+    Walls_with_character(Enemy, wall_8);
+    Walls_with_character(Enemy, wall_9);
+    Walls_with_character(Enemy, wall_10);
+    Walls_with_character(Enemy, wall_11);
+    Walls_with_character(Enemy, wall_12);
+    Walls_with_character(Enemy, wall_13);
+    Walls_with_character(Enemy, wall_14);
+    Walls_with_character(Enemy, wall_15);
+    Walls_with_character(Enemy, wall_16);
+    Walls_with_character(Enemy, wall_17);
+    Walls_with_character(Enemy, wall_18);
+    Walls_with_character(Enemy, wall_19);
+    Walls_with_character(Enemy, wall_20);
+    Walls_with_character(Enemy, wall_21);
+    Walls_with_character(Enemy, wall_22);
+    Walls_with_character(Enemy, wall_23);
+    Walls_with_character(Enemy, wall_24);
+    Walls_with_character(Enemy, wall_25);
+    Walls_with_character(Enemy, wall_26);
+    Walls_with_character(Enemy, wall_27);
+    Walls_with_character(Enemy, wall_28);
+    Walls_with_character(Enemy, wall_29);
+    Walls_with_character(Enemy, wall_30);
+    Walls_with_character(Enemy, wall_31);
+    Walls_with_character(Enemy, wall_32);
+    Walls_with_character(Enemy, wall_33);
+    Walls_with_character(Enemy, wall_34);
+    Walls_with_character(Enemy, wall_35);
+    Walls_with_character(Enemy, wall_36);
+    Walls_with_character(Enemy, wall_37);
+    Walls_with_character(Enemy, wall_38);
+    Walls_with_character(Enemy, wall_39);
+    Walls_with_character(Enemy, wall_40);
+}
+
+void game::Walls_with_character(Character *chara, Wall *muro){
+    if (chara->collidesWithItem(muro)){
+        if (chara->Get_Direction() == 'u'){
+            chara->Set_Direction('d');
+            chara->Move();
+        }
+        else if (chara->Get_Direction() == 'd'){
+            chara->Set_Direction('u');
+            chara->Move();
+        }
+        else if (chara->Get_Direction() == 'l'){
+            chara->Set_Direction('r');
+            chara->Move();
+        }
+        else if (chara->Get_Direction() == 'r'){
+            chara->Set_Direction('l');
+            chara->Move();
+        }
+    }
+}
 
 //Private
 void game::SetMC()
@@ -54,7 +283,6 @@ void game::SetMC()
     bomberman->Scale_sprite(Scale);
     bomberman->Show_Sprite(1);
     addItem(bomberman);
-    bomberman->setPos(QPointF(bomberman->Get_Pos_x(), bomberman->Get_Pos_y()));
 }
 
 void game::SetEnemy(){
@@ -62,7 +290,6 @@ void game::SetEnemy(){
     Enemy->Scale_sprite(Scale);
     Enemy->Show_Sprite(1);
     addItem(Enemy);
-    Enemy->setPos(QPointF((Enemy->Get_Pos_x()), Enemy->Get_Pos_y()));
 }
 
 void game::SetWalls()

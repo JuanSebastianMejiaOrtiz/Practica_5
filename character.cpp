@@ -23,6 +23,9 @@ Character::Character(int Start_Point_x, int Start_Point_y)
     //Connect and Start Timer
     connect(timer, SIGNAL(timeout()), this, SLOT(Walk_Animation()));
     timer->start(Walk_Animation_Speed);
+
+    //Set Initial Pos
+    setPos(QPointF(*Pos_x, *Pos_y));
 }
 
 Character::~Character()

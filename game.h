@@ -4,6 +4,7 @@
 
 #include <QGraphicsScene>
 #include <QGraphicsPixmapItem>
+#include <string>
 
 #include "mainchar.h"
 #include "wall.h"
@@ -12,13 +13,12 @@
 
 class game : public QGraphicsScene
 {
+    Q_OBJECT
 public:
     game();
     ~game();
 
     void keyPressEvent(QKeyEvent *event);
-
-    void Check_Collisions();
 
 private:
     //Characters
@@ -149,13 +149,21 @@ private:
 
 
     //Collisions
+        //Attributes
+    QTimer *Checking;
         //Walls with Characters
-    void Walls_with_character(Character *chara);
+    void Walls_with_character(Character *chara, Wall *muro);
         //Walls with Bombs
     void Walls_with_bomb(bomb *boom);
-    void bomb_not_throught_walls(bomb *boom);
-    void Walls_with_explosion(bomb *boom);
+    //void bomb_not_throught_walls(bomb *boom);
+    //void Walls_with_explosion(bomb *boom);
 
+    void Check_with_mc();
+    void Check_with_enemy();
+
+private slots:
+    //Collisions
+    void Check_Collisions();
 
 };
 

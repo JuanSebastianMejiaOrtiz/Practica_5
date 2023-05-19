@@ -4,6 +4,10 @@
 
 //General
 #define Scale 3
+#define Check 16
+#define Number_of_Limits 52
+#define Number_of_Inside_Walls 40
+#define Total_Number_of_Walls (Number_of_Limits + Number_of_Inside_Walls)
 
 //Main Character (mc)
     //Movement
@@ -57,9 +61,9 @@
 //Enemy
     //Position
 #define enemy_posx_block_initial 8
-#define enemy_posy_block_initial 8
-#define enemy_pos_x_initial (wall_ancho * Scale)
-#define enemy_pos_y_initial (wall_alto * Scale)
+#define enemy_posy_block_initial 1
+#define enemy_pos_x_initial (wall_ancho * Scale * enemy_posx_block_initial)
+#define enemy_pos_y_initial (wall_alto * Scale * enemy_posy_block_initial)
     //Animation
 #define enemy_Walk_Animation_Speed 200
 #define enemy_Walk_Animation_Frame_Ammount 3

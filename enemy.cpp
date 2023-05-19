@@ -1,7 +1,7 @@
 
 #include "enemy.h"
 
-enemy::enemy() : Character((enemy_pos_x_initial * enemy_posx_block_initial), (enemy_posy_block_initial * enemy_pos_y_initial))
+enemy::enemy() : Character(enemy_pos_x_initial, (enemy_posy_block_initial * enemy_pos_y_initial))
 {
     //Assign Memory for Attributes
 
@@ -20,6 +20,11 @@ enemy::enemy() : Character((enemy_pos_x_initial * enemy_posx_block_initial), (en
     //Connect and Start Timer
     connect(&Dead_Timer, SIGNAL(timeout()), this, SLOT(Dead_Animation()));
     Dead_Timer.start();
+}
+
+void enemy::Set_Direction()
+{
+
 }
 
 void enemy::Dead_Animation()

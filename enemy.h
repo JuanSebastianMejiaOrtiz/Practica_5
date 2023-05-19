@@ -2,9 +2,6 @@
 #ifndef ENEMY_H
 #define ENEMY_H
 
-#include <cstdlib>
-#include <ctime>
-
 #include "character.h"
 #include "global_macros.h"
 
@@ -12,7 +9,6 @@ class enemy : public Character
 {
 public:
     enemy();
-    ~enemy();
 
     void Set_Direction();
 
