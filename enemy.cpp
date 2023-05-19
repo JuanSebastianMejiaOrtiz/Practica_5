@@ -5,7 +5,8 @@ enemy::enemy() : Character(enemy_pos_x_initial, (enemy_posy_block_initial * enem
 {
     //Assign Memory for Attributes
     Dead_Timer = new QTimer;
-    Move_Timer = new QTimer;
+    Change_Move_Timer = new QTimer;
+    Enemy_Move_Timer = new QTimer;
 
     //Set Default Values
     Enemy_Dead_Actual_Frame = 0;
@@ -22,15 +23,17 @@ enemy::enemy() : Character(enemy_pos_x_initial, (enemy_posy_block_initial * enem
 
     //Connect and Start Timer
     connect(Dead_Timer, SIGNAL(timeout()), this, SLOT(Dead_Animation()));
-    connect(Move_Timer, SIGNAL(timeout()), this, SLOT(Enemy_Set_Direction()));
+    connect(Change_Move_Timer, SIGNAL(timeout()), this, SLOT(Enemy_Set_Direction()));
+    connect(Enemy_Move_Timer, SIGNAL(timeout()), SLOT(Enemy_Move()));
     Dead_Timer->start(enemy_Dead_Animation_Speed);
-    Move_Timer->start(enemy_change_direction);
+    Change_Move_Timer->start(enemy_change_direction);
+    Enemy_Move_Timer->start(Check);
 }
 
 enemy::~enemy()
 {
     delete Dead_Timer;
-    delete Move_Timer;
+    delete Change_Move_Timer;
 }
 
 void enemy::Enemy_Set_Direction()
@@ -61,3 +64,64 @@ void enemy::Dead_Animation()
     }
 }
 
+
+//Movement
+void enemy::Enemy_Move(){
+    if (Get_isAlive()){
+        Enemy_Movement();
+        Enemy_Animation();
+    }
+}
+
+void enemy::Enemy_Movement()
+{
+    if (Get_Direction() == 'u'){
+        *Pos_y -= enemy_Speed;
+    }
+    else if (Get_Direction() == 'd'){
+        *Pos_y += enemy_Speed;
+    }
+    else if (Get_Direction() == 'l'){
+        *Pos_x -= enemy_Speed;
+    }
+    else if (Get_Direction() == 'r'){
+        *Pos_x += enemy_Speed;
+    }
+
+    setPos(QPointF(*Pos_x, *Pos_y));
+}
+
+void enemy::Enemy_Animation(){
+    if(Get_Direction() == 'u' || Get_Direction() == 'r'){
+        Enemy_Animation_Right();
+    }
+    else if (Get_Direction() == 'd' || Get_Direction() == 'l'){
+        Enemy_Animation_Left();
+    }
+}
+
+void enemy::Enemy_Animation_Right(){
+    if (Walk_Animation_Actual_Frame < Walk_Animation_Frame_Ammount_mc){
+        Select_sprite( (Walk_Animation_Actual_Frame), 0);
+        Scale_sprite(Scale);
+        Show_Sprite(1);
+        Walk_Animation_Actual_Frame++;
+    }
+    else{
+        timer->stop();
+        Walk_Animation_Actual_Frame = 0;
+    }
+}
+
+void enemy::Enemy_Animation_Left(){
+    if (Walk_Animation_Actual_Frame < Walk_Animation_Frame_Ammount_mc){
+        Select_sprite( (enemy_Walk_Animation_Frame_Ammount + Walk_Animation_Actual_Frame), 0);
+        Scale_sprite(Scale);
+        Show_Sprite(1);
+        Walk_Animation_Actual_Frame++;
+    }
+    else{
+        timer->stop();
+        Walk_Animation_Actual_Frame = 0;
+    }
+}

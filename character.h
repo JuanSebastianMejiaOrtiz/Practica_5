@@ -40,7 +40,6 @@ protected:
     bool *isAlive; //0:Dead, 1:Alive
     bool MOE;
 
-private:
     //Position Variables
     int Movement_Speed; //Pixels per cycle
 
@@ -48,6 +47,8 @@ private:
     short Walk_Animation_Speed; //1000: 1 second
     short Walk_Animation_Actual_Frame;
     QTimer *timer;
+
+private:
 
     //Movement Methods
     void Movement();
