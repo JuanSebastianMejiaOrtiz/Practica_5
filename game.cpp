@@ -43,13 +43,12 @@ void game::keyPressEvent(QKeyEvent *event)
 {
     bomberman->keyPressEvent(event);
 
-    //if (!(bomberman->bomba->Get_Already_Exist()) && (bomberman->bomba->Bomb_Cooldown->isActive())){
-    //    addItem(bomberman->bomba);
-    //}
-    //else if ((bomberman->bomba->Get_Already_Exist()) && (bomberman->bomba->Bomb_Cooldown->isActive())){
-    //    removeItem(bomberman->bomba);
-    //    bomberman->bomba->Set_Default_Values();
-    //}
+    if (!(bomberman->bomba->Get_Already_Exist()) && (bomberman->bomba->Bomb_Cooldown->isActive())){
+        addItem(bomberman->bomba);
+    }
+    else if ((bomberman->bomba->Get_Already_Exist()) && (bomberman->bomba->Bomb_Cooldown->isActive())){
+        removeItem(bomberman->bomba);
+    }
 }
 
 void game::Check_Collisions()
@@ -154,6 +153,9 @@ void game::Check_with_mc(){
     Walls_with_character(bomberman, wall_38);
     Walls_with_character(bomberman, wall_39);
     Walls_with_character(bomberman, wall_40);
+
+    //Collides with enemies
+    Enemy_and_Main_Character(bomberman, Enemy);
 }
 
 void game::Check_with_enemy(){
@@ -271,6 +273,15 @@ void game::Walls_with_character(Character *chara, Wall *muro){
         else if (chara->Get_Direction() == 'r'){
             chara->Set_Direction('l');
             chara->Move();
+        }
+    }
+}
+
+void game::Enemy_and_Main_Character(Character *chara, enemy *villian)
+{
+    if (chara->Get_isAlive()){
+        if (chara->collidesWithItem(villian)){
+            chara->Set_isAlive(0);
         }
     }
 }
@@ -499,7 +510,7 @@ void game::Create_Inside_Walls(){
     Set_Walls_Pos(wall_19, 7, 6);
     Set_Walls_Pos(wall_20, 7, 8);
     //Destructible
-    Set_Walls_Pos(wall_21, 3, 1);
+    Set_Walls_Pos(wall_21, 3, 3);
     Set_Walls_Pos(wall_22, 1, 3);
     Set_Walls_Pos(wall_23, 1, 4);
     Set_Walls_Pos(wall_24, 2, 5);

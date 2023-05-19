@@ -4,7 +4,6 @@
 mainchar::mainchar() : Character(pos_x_initial_mc, pos_y_initial_mc)
 {
     //Assign Memory for Attributes
-    //Dead_Timer = new QTimer;
     bomba = new bomb;
 
     //Set Default Values
@@ -16,15 +15,13 @@ mainchar::mainchar() : Character(pos_x_initial_mc, pos_y_initial_mc)
     *full = imagen.copy(0, 0, ancho_mainchar*number_cols_mc, alto_mainchar*number_lines_mc);
 
     //Connect and Start Dead_Timer
-    //connect(Dead_Timer, SIGNAL(timeout()), this, SLOT(Dead_Animation()));
-    //Dead_Timer->start(Dead_Animation_Speed_mc);
     connect(&Dead_Timer, SIGNAL(timeout()), this, SLOT(Dead_Animation()));
     Dead_Timer.start(Dead_Animation_Speed_mc);
 }
 
 mainchar::~mainchar()
 {
-    //delete Dead_Timer;
+
 }
 
 void mainchar::keyPressEvent(QKeyEvent *event)
@@ -57,9 +54,14 @@ void mainchar::keyPressEvent(QKeyEvent *event)
                 bomba->Set_Bomb_pos_y(Get_Pos_y());
                 bomba->setPos(QPointF(bomba->Get_Bomb_pos_x(), bomba->Get_Bomb_pos_y()));
                 //Kaboom
+                //bomba->Bomb_Cooldown->setInterval();
                 //bomba->Bomb_Cooldown->start();
                 bomba->Bomb_Cooldown->start(bomb_Animation_Speed);
-
+            }
+            else{
+                if (bomba->Bomb_Cooldown->isActive()){
+                    bomba->Set_Default_Values();
+                }
             }
         }
     }

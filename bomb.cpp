@@ -13,7 +13,7 @@ bomb::bomb()
 
     //Set Sprite
     QPixmap imagen;
-    int x = (7 * wall_ancho) + (bomb_charge_frame_ammount * bomb_ancho);
+    int x = 0;
     int y = (number_lines_mc * alto_mainchar);
     int WIDTH = (bomb_ancho * bomb_charge_frame_ammount) + (wall_Destruction_Frame_Ammount * wall_ancho);
     int HEIGHT = bomb_alto + (explosion_alto_box);
@@ -32,7 +32,7 @@ bomb::bomb()
         //Other
     *Already_Exist = 0;
     adjust_size_sprite = 0;
-    *Temp_Full = *full;
+    *Temp_Full = full->copy();
 
     //Connect and Start bomb_timer
     connect(Bomb_Cooldown, SIGNAL(timeout()), this, SLOT(Kaboom()));
