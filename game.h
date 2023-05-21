@@ -58,10 +58,9 @@ private:
     QTimer *Checking;
         //Walls with Characters
     void Walls_with_character(Character *chara, Wall *muro);
-        //Walls with Bombs
-    void Walls_with_bomb(bomb *boom);
         //Enemy with Character
     void Enemy_and_Main_Character(Character *chara, enemy *villian);
+        //Bomb Explosion
     //void bomb_not_throught_walls(bomb *boom);
     //void Walls_with_explosion(bomb *boom);
 

@@ -14,8 +14,8 @@ public:
 
     //Set and Get Methods
         //kaboom
-    void Set_kaboom(bool boom);
-    bool Get_kaboom();
+    //void Set_kaboom(bool boom);
+    //bool Get_kaboom();
         //Already_Exist
     void Set_Already_Exist(bool exist);
     bool Get_Already_Exist();
@@ -30,26 +30,33 @@ public:
     bool is_activated();
     void activate_bomb(bool act);
 
-    QTimer *Bomb_Cooldown;
+    QTimer *Bomb_Detonate;
     QTimer *bomb_timer;
 
 private:
-    //Position
+    //Attributes
+        //Position
     int *Bomb_pos_x;
     int *Bomb_pos_y;
 
-    //Animation Atributes
-        //Both
-    bool kaboom; //0:no explosion, 1:explosion
+        //Animation
+            //Plant bomb
+    short contador_bomb;
     int Bomb_Animation_Speed; //1000: 1 second
     int Bomb_Animation_Actual_Frame;
-        //Explosion
+            //Explosion
     int explosion_y;
     int explosion_x;
-    QPixmap *Explosions;
+    QPixmap *Full_Explosions;
+    //Array Explosions:
+        // 0:center
+        // 1:up end
+        // 2:down end
+        // 3:left end
+        // 4:right end
+    QPixmap *Explosions[5];
 
     //Other
-    bool *Already_Exist;
     bool is_active;
 
     //Animation Methods
@@ -61,8 +68,8 @@ private:
 
 private slots:
     //Animation Explosion
-    void Bomb_Animations();
-    void Bomb_Check_If_Can_Use();
+    void Bomb_Plant_Animation();
+    void Bomb_Explosion_Animation();
 };
 
 #endif // BOMB_H

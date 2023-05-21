@@ -5,12 +5,10 @@ bomb::bomb()
 {
     //Assign Memory for Attributes
     bomb_timer = new QTimer;
-    Bomb_Cooldown = new QTimer;
-    Already_Exist = new bool;
-    Explosions = new QPixmap;
+    Bomb_Detonate = new QTimer;
     Bomb_pos_x = new int;
     Bomb_pos_y = new int;
-    is_active = false;
+    Full_Explosions = new QPixmap;
 
     //Set Sprite
     QPixmap imagen;
@@ -22,62 +20,47 @@ bomb::bomb()
     *full = imagen.copy(x, y, WIDTH, HEIGHT);
 
     //Set Default Values
-    //Animation
-    Bomb_Animation_Speed = bomb_Animation_Speed; //from global_macros.h
+    is_active = false;
+        //Animation
+            //Bomb
+    Bomb_Animation_Speed = bomb_Animation_Speed;
     Bomb_Animation_Actual_Frame = 0;
-    explosion_x = 0;
-    explosion_y = 0;
-        //Other
-    *Already_Exist = 0;
-    *Explosions = full->copy(0, bomb_alto, (explosion_ancho_frame_ammount * explosion_ancho_box), (explosion_alto_frame_ammount * explosion_alto_box));
+            //Explosion
+    *Full_Explosions = full->copy(0, bomb_alto, (explosion_ancho_frame_ammount * explosion_ancho_box), (explosion_alto_frame_ammount * explosion_alto_box));
 
     //Connect and Start bomb_timer
-    connect(bomb_timer, SIGNAL(timeout()), this, SLOT(Bomb_Animations()));
-
+    connect(bomb_timer, SIGNAL(timeout()), this, SLOT(Bomb_Plant_Animation()));
+    connect(Bomb_Detonate, SIGNAL(timeout()), this, SLOT(Bomb_Explosion_Animation()));
 }
 
 bomb::~bomb()
 {
     delete bomb_timer;
-    delete Already_Exist;
-    delete Bomb_Cooldown;
-    delete Explosions;
+    delete Bomb_Detonate;
+    delete Full_Explosions;
 }
 
 
 //Animation Methods
 void bomb::Plant_Bomb()
 {
-    //Animation
+    //Animation planted bomb
     if (Bomb_Animation_Actual_Frame < bomb_charge_frame_ammount){
-            Select_sprite(Bomb_Animation_Actual_Frame, 0);
-            Scale_sprite(Scale);
-            Show_Sprite(1);
-            Bomb_Animation_Actual_Frame++;
+        Select_sprite(Bomb_Animation_Actual_Frame, 0);
+        Scale_sprite(Scale);
+        Show_Sprite(1);
+
+        Bomb_Animation_Actual_Frame++;
+        contador_bomb++;
     }
     else if (Bomb_Animation_Actual_Frame == bomb_charge_frame_ammount){
         Bomb_Animation_Actual_Frame = 0;
-        Set_kaboom(1);
     }
 }
 
 void bomb::kaboom1()
 {
-    if (Bomb_Animation_Actual_Frame < explosion_frame_ammount){
-        Explosion_Select_Sprite(explosion_x, explosion_y);
-        Scale_sprite(Scale);
-        Show_Sprite(1);
-
-        Bomb_Animation_Actual_Frame++;
-        explosion_x++;
-        if (explosion_x == explosion_frame_ammount && explosion_y < 1){
-            explosion_x = 0;
-            explosion_y++;
-        }
-    }
-    else if (Bomb_Animation_Actual_Frame == explosion_frame_ammount){
-        bomb_timer->stop();
-    }
+    //Animation explosion
 }
 
 void bomb::Explosion_Select_Sprite(int _x, int _y)
@@ -86,69 +69,31 @@ void bomb::Explosion_Select_Sprite(int _x, int _y)
     int y = (_y * explosion_alto_box) * explosion_alto_frame_ammount;
     int WIDTH = explosion_ancho_frame_ammount * explosion_ancho_box;
     int HEIGHT = explosion_alto_frame_ammount * explosion_alto_box;
-    *actual = Explosions->copy(x, y, WIDTH, HEIGHT);
+    *actual = Full_Explosions->copy(x, y, WIDTH, HEIGHT);
 }
 
     //SLOTS
-void bomb::Bomb_Animations()
+void bomb::Bomb_Plant_Animation()
 {
-    if (!Get_kaboom()){
+    if (contador_bomb < bomb_charge_animation_repeat){
         Plant_Bomb();
     }
     else{
-        kaboom1();
+        bomb_timer->stop();
+        Set_Default_Values();
+        Bomb_Detonate->start(explosion_Animation_Speed);
     }
 }
 
-void bomb::Bomb_Check_If_Can_Use(){
-    if (!Get_Already_Exist()){
-        bomb_timer->start();
-        Set_Already_Exist(1);
-    }
+void bomb::Bomb_Explosion_Animation(){
+
 }
 
 //Set and Get Methods
-    //kaboom
-void bomb::Set_kaboom(bool boom)
-{
-    kaboom = boom;
-}
-
-bool bomb::Get_kaboom()
-{
-    return kaboom;
-}
-    //Already_Exist
-void bomb::Set_Already_Exist(bool exist){
-    *Already_Exist = exist;
-}
-
-bool bomb::Get_Already_Exist(){
-    return *Already_Exist;
-}
-
-void bomb::Set_Bomb_pos_x(int x){
-    *Bomb_pos_x = x;
-}
-
-int bomb::Get_Bomb_pos_x(){
-    return *Bomb_pos_x;
-}
-
-void bomb::Set_Bomb_pos_y(int y){
-    *Bomb_pos_y = y;
-}
-
-int bomb::Get_Bomb_pos_y(){
-    return *Bomb_pos_y;
-}
-
 void bomb::Set_Default_Values(){
-    kaboom = 0;
     Bomb_Animation_Actual_Frame = 0;
     explosion_x = 0;
     explosion_y = 0;
-    Already_Exist = 0;
 }
 
 bool bomb::is_activated()

@@ -64,6 +64,7 @@ void game::Check_Collisions()
 
 void game::poner_bomba(QGraphicsItem *item)
 {
+    bomberman->bomba->bomb_timer->start();
     addItem(item);
 }
 

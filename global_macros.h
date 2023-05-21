@@ -4,7 +4,7 @@
 
 //General
 #define Scale 3
-#define Check 5
+#define Check 2
 #define Total_Number_of_Walls (Number_of_Limits + Number_of_Inside_Walls)
 
 //Main Character (mc)
@@ -14,7 +14,7 @@
     //Animation
 #define _Walk_Animation_Speed_mc 500
 #define Walk_Animation_Frame_Ammount_mc 3
-#define Dead_Animation_Speed_mc 200
+#define Dead_Animation_Speed_mc 150
 #define Dead_Animation_Frame_Ammount_mc 7
 
     //Medidas
@@ -47,13 +47,13 @@
     //Animation
         //Bomb
 #define bomb_charge_frame_ammount 3
-#define bomb_charge_animation_repeat 3
-#define bomb_Animation_Speed 800
-#define bomb_Cooldown ((bomb_Animation_Speed * bomb_charge_frame_ammount * bomb_charge_animation_repeat) + (bomb_Animation_Speed * explosion_frame_ammount))
+#define bomb_charge_animation_repeat (3 * bomb_charge_frame_ammount)
+#define bomb_Animation_Speed 1000
         //Explosion
 #define explosion_frame_ammount 4
 #define explosion_alto_frame_ammount 5
 #define explosion_ancho_frame_ammount 5
+#define explosion_Animation_Speed 500
 
     //Medidas
 #define bomb_ancho 16
