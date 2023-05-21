@@ -4,9 +4,7 @@
 
 //General
 #define Scale 3
-#define Check 16
-#define Number_of_Limits 52
-#define Number_of_Inside_Walls 40
+#define Check 5
 #define Total_Number_of_Walls (Number_of_Limits + Number_of_Inside_Walls)
 
 //Main Character (mc)
@@ -14,7 +12,7 @@
 #define Walk_Speed_mc 4
 
     //Animation
-#define _Walk_Animation_Speed_mc 200
+#define _Walk_Animation_Speed_mc 500
 #define Walk_Animation_Frame_Ammount_mc 3
 #define Dead_Animation_Speed_mc 200
 #define Dead_Animation_Frame_Ammount_mc 7
@@ -37,6 +35,12 @@
     //Medidas
 #define wall_alto 16
 #define wall_ancho 16
+
+    //Ammount
+#define Number_Limits_x_One_side 16
+#define Number_Limits_y_One_side 10
+#define Number_of_Limits ((Number_Limits_x_One_side * 2) + (Number_Limits_y_One_side * 2))
+#define Number_of_Inside_Walls 40
 
 
 //Bomb
@@ -64,13 +68,13 @@
 #define enemy_posy_block_initial 1
 #define enemy_pos_x_initial (wall_ancho * Scale * enemy_posx_block_initial)
 #define enemy_pos_y_initial (wall_alto * Scale * enemy_posy_block_initial)
-#define enemy_Speed 1
+#define enemy_Speed 10
     //Animation
 #define enemy_Walk_Animation_Speed 200
 #define enemy_Walk_Animation_Frame_Ammount 3
 #define enemy_Dead_Animation_Speed 300
 #define enemy_Dead_Animation_Frame_Ammount 5
-#define enemy_change_direction 2000
+#define enemy_change_direction 5000
     //Medidas
 #define enemy_ancho 16
 #define enemy_alto 16

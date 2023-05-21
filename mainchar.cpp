@@ -46,23 +46,26 @@ void mainchar::keyPressEvent(QKeyEvent *event)
         }
 
         //Bomba (para bailar esto es una)
-        if(event->key() == Qt::Key_B){
+        if(event->key() == Qt::Key_B && !bomba->is_activated()){
+            bomba->activate_bomb(true);
+            emit colocar_bomba(bomba);
+            bomba->setPos(pos());
             //Bomba poner :)
-            if (!bomba->Get_Already_Exist()){
-                //Change pos bomb
-                bomba->Set_Bomb_pos_x(Get_Pos_x() - (explosion_ancho_box)*Scale);
-                bomba->Set_Bomb_pos_y(Get_Pos_y());
-                bomba->setPos(QPointF(bomba->Get_Bomb_pos_x(), bomba->Get_Bomb_pos_y()));
-                //Kaboom
-                //bomba->Bomb_Cooldown->setInterval();
-                //bomba->Bomb_Cooldown->start();
-                bomba->Bomb_Cooldown->start(bomb_Animation_Speed);
-            }
-            else{
-                if (bomba->Bomb_Cooldown->isActive()){
-                    bomba->Set_Default_Values();
-                }
-            }
+//            if (!bomba->Get_Already_Exist()){
+//                //Change pos bomb
+//                bomba->Set_Bomb_pos_x(Get_Pos_x() - (explosion_ancho_box)*Scale);
+//                bomba->Set_Bomb_pos_y(Get_Pos_y());
+//                bomba->setPos(QPointF(bomba->Get_Bomb_pos_x(), bomba->Get_Bomb_pos_y()));
+//                //Kaboom
+//                //bomba->Bomb_Cooldown->setInterval();
+//                //bomba->Bomb_Cooldown->start();
+//                bomba->Bomb_Cooldown->start(bomb_Animation_Speed);
+//            }
+//            else{
+//                if (bomba->Bomb_Cooldown->isActive()){
+//                    bomba->Set_Default_Values();
+//                }
+//            }
         }
     }
 }

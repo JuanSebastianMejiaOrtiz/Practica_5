@@ -32,6 +32,9 @@ private:
 private slots:
     //Dead Animation
     void Dead_Animation();
+
+signals:
+    void colocar_bomba(QGraphicsItem *item);
 };
 
 #endif // MAINCHAR_H

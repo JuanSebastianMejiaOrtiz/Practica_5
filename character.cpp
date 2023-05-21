@@ -129,7 +129,7 @@ void Character::Walk_Up_Animation()
         Walk_Animation_Actual_Frame++;
     }
     else{
-        timer->stop();
+        //timer->stop();
         Walk_Animation_Actual_Frame = 0;
     }
 }

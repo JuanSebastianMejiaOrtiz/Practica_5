@@ -27,7 +27,7 @@ enemy::enemy() : Character(enemy_pos_x_initial, (enemy_posy_block_initial * enem
     connect(Enemy_Move_Timer, SIGNAL(timeout()), SLOT(Enemy_Move()));
     Dead_Timer->start(enemy_Dead_Animation_Speed);
     Change_Move_Timer->start(enemy_change_direction);
-    Enemy_Move_Timer->start(Check);
+    Enemy_Move_Timer->start(enemy_Walk_Animation_Speed);
 }
 
 enemy::~enemy()
@@ -107,7 +107,7 @@ void enemy::Enemy_Animation_Right(){
         Walk_Animation_Actual_Frame++;
     }
     else{
-        timer->stop();
+       // timer->stop();
         Walk_Animation_Actual_Frame = 0;
     }
 }
