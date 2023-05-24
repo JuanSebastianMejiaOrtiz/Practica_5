@@ -7,7 +7,6 @@ game::game()
         //Characters
             //Main Character
     bomberman = new mainchar();
-    connect(bomberman,SIGNAL(colocar_bomba(QGraphicsItem *)),this,SLOT(poner_bomba(QGraphicsItem *)));
             //Enemy
     Enemy = new enemy();
         //Walls
@@ -28,9 +27,13 @@ game::game()
     SetWalls();
     set_fondo();
 
-    //Connect and Start Timer
+    //Connect for all signals
+        //Connect and Start Timer
     connect(Checking, SIGNAL(timeout()), this, SLOT(Check_Collisions()));
     Checking->start(Check);
+        //Connect Colocar Bomba
+    connect(bomberman, SIGNAL(colocar_bomba(QGraphicsItem*)), this, SLOT(poner_bomba(QGraphicsItem*)));
+    connect(bomberman, SIGNAL(quita_bomba(QGraphicsItem*,QTimer*)), this, SLOT(quitar_bomba(QGraphicsItem*,QTimer*)));
 }
 
 game::~game()
@@ -64,8 +67,12 @@ void game::Check_Collisions()
 
 void game::poner_bomba(QGraphicsItem *item)
 {
-    bomberman->bomba->bomb_timer->start();
     addItem(item);
+}
+
+void game::quitar_bomba(QGraphicsItem *item, QTimer *timer){
+    removeItem(item);
+    timer->start(explosion_Animation_Speed);
 }
 
 void game::Check_with_mc(){
@@ -123,6 +130,7 @@ void game::Enemy_and_Main_Character(Character *chara, enemy *villian)
     if (chara->Get_isAlive()){
         if (chara->collidesWithItem(villian)){
             chara->Set_isAlive(0);
+            chara->Set_Direction('n');
         }
     }
 }

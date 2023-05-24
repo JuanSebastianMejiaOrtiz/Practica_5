@@ -13,9 +13,6 @@ public:
     ~bomb();
 
     //Set and Get Methods
-        //kaboom
-    //void Set_kaboom(bool boom);
-    //bool Get_kaboom();
         //Already_Exist
     void Set_Already_Exist(bool exist);
     bool Get_Already_Exist();
@@ -33,12 +30,11 @@ public:
     QTimer *Bomb_Detonate;
     QTimer *bomb_timer;
 
+    //Position
+    QPointF Pos_Bomb;
+
 private:
     //Attributes
-        //Position
-    int *Bomb_pos_x;
-    int *Bomb_pos_y;
-
         //Animation
             //Plant bomb
     short contador_bomb;
@@ -70,6 +66,9 @@ private slots:
     //Animation Explosion
     void Bomb_Plant_Animation();
     void Bomb_Explosion_Animation();
+
+signals:
+    void start_explosion(QTimer *timer);
 };
 
 #endif // BOMB_H

@@ -71,6 +71,7 @@ private slots:
     //Collisions
     void Check_Collisions();
     void poner_bomba(QGraphicsItem *item);
+    void quitar_bomba(QGraphicsItem *item, QTimer *timer);
 
 };
 

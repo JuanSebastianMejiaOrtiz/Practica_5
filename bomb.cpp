@@ -6,8 +6,6 @@ bomb::bomb()
     //Assign Memory for Attributes
     bomb_timer = new QTimer;
     Bomb_Detonate = new QTimer;
-    Bomb_pos_x = new int;
-    Bomb_pos_y = new int;
     Full_Explosions = new QPixmap;
 
     //Set Sprite
@@ -82,6 +80,7 @@ void bomb::Bomb_Plant_Animation()
         bomb_timer->stop();
         Set_Default_Values();
         Bomb_Detonate->start(explosion_Animation_Speed);
+        emit start_explosion(Bomb_Detonate);
     }
 }
 

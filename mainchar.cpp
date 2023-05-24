@@ -14,7 +14,10 @@ mainchar::mainchar() : Character(pos_x_initial_mc, pos_y_initial_mc)
     imagen.load("://Recursos/Practica5_sprites.png");
     *full = imagen.copy(0, 0, ancho_mainchar*number_cols_mc, alto_mainchar*number_lines_mc);
 
-    //Connect and Start Dead_Timer
+    //Connect for all signals
+        //Connect Start Explosion
+    connect(bomba, SIGNAL(start_explosion(QTimer*)), this, SLOT(Quit_Bomb(QGraphicsItem*,QTimer*)));
+        //Connect and Start Dead_Timer
     connect(&Dead_Timer, SIGNAL(timeout()), this, SLOT(Dead_Animation()));
     Dead_Timer.start(Dead_Animation_Speed_mc);
 }
@@ -47,11 +50,33 @@ void mainchar::keyPressEvent(QKeyEvent *event)
 
         //Bomba (para bailar esto es una)
         if(event->key() == Qt::Key_B && !bomba->is_activated()){
+            //Pos Bomba
+            bomba->Pos_Bomb = Position_Bomb();
+
             bomba->activate_bomb(true);
+            bomba->setPos(bomba->Pos_Bomb);
+            bomba->bomb_timer->start(bomb_Animation_Speed);
             emit colocar_bomba(bomba);
-            bomba->setPos(pos());
         }
     }
+}
+
+QPointF mainchar::Position_Bomb()
+{
+    int PositioninX = static_cast<int>(pos().x()) / wall_ancho;
+    int PositioninY = static_cast<int>(pos().y()) / wall_alto;
+    int residuo;
+
+    PositioninX *= wall_ancho;
+    PositioninY *= wall_alto;
+
+    residuo = PositioninX % (wall_ancho * Scale);
+    PositioninX -= residuo;
+
+    residuo = PositioninY % (wall_alto * Scale);
+    PositioninY -= residuo;
+
+    return QPointF(PositioninX, PositioninY);
 }
 
 void mainchar::Dead_Animation()
@@ -70,5 +95,10 @@ void mainchar::Dead_Animation()
             Show_Sprite(0);
         }
     }
+}
+
+void mainchar::Quit_Bomb(QGraphicsItem *item, QTimer *timer)
+{
+    emit quita_bomba(item, timer);
 }
 

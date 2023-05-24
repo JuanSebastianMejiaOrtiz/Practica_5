@@ -4,7 +4,7 @@
 
 //General
 #define Scale 3
-#define Check 2
+#define Check 1
 #define Total_Number_of_Walls (Number_of_Limits + Number_of_Inside_Walls)
 
 //Main Character (mc)
@@ -47,8 +47,8 @@
     //Animation
         //Bomb
 #define bomb_charge_frame_ammount 3
-#define bomb_charge_animation_repeat (3 * bomb_charge_frame_ammount)
-#define bomb_Animation_Speed 1000
+#define bomb_charge_animation_repeat (4 * bomb_charge_frame_ammount)
+#define bomb_Animation_Speed 200
         //Explosion
 #define explosion_frame_ammount 4
 #define explosion_alto_frame_ammount 5
