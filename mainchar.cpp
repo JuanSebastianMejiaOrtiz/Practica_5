@@ -16,7 +16,9 @@ mainchar::mainchar() : Character(pos_x_initial_mc, pos_y_initial_mc)
 
     //Connect for all signals
         //Connect Start Explosion
-    connect(bomba, SIGNAL(start_explosion(QTimer*)), this, SLOT(Quit_Bomb(QGraphicsItem*,QTimer*)));
+    connect(bomba, SIGNAL(start_explosion(QTimer*)), this, SLOT(Quit_Bomb(QTimer*)));
+        //Connect End Explosion
+    connect(bomba, SIGNAL(end_explosion()), this, SLOT(End_Bomb()));
         //Connect and Start Dead_Timer
     connect(&Dead_Timer, SIGNAL(timeout()), this, SLOT(Dead_Animation()));
     Dead_Timer.start(Dead_Animation_Speed_mc);
@@ -71,10 +73,16 @@ QPointF mainchar::Position_Bomb()
     PositioninY *= wall_alto;
 
     residuo = PositioninX % (wall_ancho * Scale);
-    PositioninX -= residuo;
+    if (residuo < (wall_ancho * Scale)/2){
+        PositioninX -= residuo;
+    }
+    else PositioninX += residuo - wall_ancho;
 
     residuo = PositioninY % (wall_alto * Scale);
-    PositioninY -= residuo;
+    if (residuo < (wall_alto * Scale)/2){
+        PositioninY -= residuo;
+    }
+    else PositioninY += residuo - wall_alto;
 
     return QPointF(PositioninX, PositioninY);
 }
@@ -89,7 +97,6 @@ void mainchar::Dead_Animation()
             Dead_Actual_Frame++;
         }
         else if (Dead_Actual_Frame == Dead_Animation_Frame_Ammount_mc){
-            //Dead_Timer->stop();
             Dead_Timer.stop();
             Dead_Actual_Frame = 0;
             Show_Sprite(0);
@@ -97,8 +104,23 @@ void mainchar::Dead_Animation()
     }
 }
 
-void mainchar::Quit_Bomb(QGraphicsItem *item, QTimer *timer)
+void mainchar::Quit_Bomb(QTimer *timer)
 {
-    emit quita_bomba(item, timer);
+    int posx = static_cast<int>(bomba->Pos_Bomb.x());
+    int posy = static_cast<int>(bomba->Pos_Bomb.y());
+
+    posx -= wall_ancho * Scale * 2;
+    posy -= wall_alto * Scale * 2;
+
+    bomba->Pos_Bomb.setX(posx);
+    bomba->Pos_Bomb.setY(posy);
+    bomba->setPos(bomba->Pos_Bomb);
+
+    emit quita_bomba(timer);
+}
+
+void mainchar::End_Bomb()
+{
+    emit end_explosion(bomba);
 }
 

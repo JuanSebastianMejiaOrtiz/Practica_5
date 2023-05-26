@@ -37,12 +37,16 @@ private slots:
     //Dead Animation
     void Dead_Animation();
 
-    void Quit_Bomb(QGraphicsItem *item, QTimer *timer);
+    void Quit_Bomb(QTimer *timer);
+
+    void End_Bomb();
 
 signals:
     void colocar_bomba(QGraphicsItem *item);
 
-    void quita_bomba(QGraphicsItem *item, QTimer *timer);
+    void quita_bomba(QTimer *timer);
+
+    void end_explosion(QGraphicsItem *item);
 };
 
 #endif // MAINCHAR_H

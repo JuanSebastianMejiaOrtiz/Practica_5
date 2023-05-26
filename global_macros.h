@@ -47,19 +47,23 @@
     //Animation
         //Bomb
 #define bomb_charge_frame_ammount 3
-#define bomb_charge_animation_repeat (4 * bomb_charge_frame_ammount)
+#define bomb_charge_animation_repeat (3 * bomb_charge_frame_ammount)
 #define bomb_Animation_Speed 200
         //Explosion
 #define explosion_frame_ammount 4
+#define explosion_ammount_per_line 2
 #define explosion_alto_frame_ammount 5
 #define explosion_ancho_frame_ammount 5
-#define explosion_Animation_Speed 500
+#define explosion_Animation_Speed 100
 
     //Medidas
 #define bomb_ancho 16
 #define bomb_alto 16
 #define explosion_ancho_box 16
 #define explosion_alto_box 16
+
+    //Other
+#define explosion_size_grid 5
 
 
 //Enemy

@@ -61,7 +61,6 @@ private:
         //Enemy with Character
     void Enemy_and_Main_Character(Character *chara, enemy *villian);
         //Bomb Explosion
-    //void bomb_not_throught_walls(bomb *boom);
     //void Walls_with_explosion(bomb *boom);
 
     void Check_with_mc();
@@ -71,7 +70,8 @@ private slots:
     //Collisions
     void Check_Collisions();
     void poner_bomba(QGraphicsItem *item);
-    void quitar_bomba(QGraphicsItem *item, QTimer *timer);
+    void quitar_bomba(QTimer *timer);
+    void Fin_Explosion(QGraphicsItem *item);
 
 };
 

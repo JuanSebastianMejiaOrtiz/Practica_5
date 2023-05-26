@@ -23,7 +23,10 @@ bomb::bomb()
             //Bomb
     Bomb_Animation_Speed = bomb_Animation_Speed;
     Bomb_Animation_Actual_Frame = 0;
+    contador_bomb = 0;
             //Explosion
+    explosion_x = 0;
+    explosion_y = 0;
     *Full_Explosions = full->copy(0, bomb_alto, (explosion_ancho_frame_ammount * explosion_ancho_box), (explosion_alto_frame_ammount * explosion_alto_box));
 
     //Connect and Start bomb_timer
@@ -58,7 +61,13 @@ void bomb::Plant_Bomb()
 
 void bomb::kaboom1()
 {
-    //Animation explosion
+    explosion_x++;
+
+    if (explosion_x == explosion_ammount_per_line){
+        explosion_x = 0;
+        explosion_y++;
+    }
+
 }
 
 void bomb::Explosion_Select_Sprite(int _x, int _y)
@@ -79,20 +88,37 @@ void bomb::Bomb_Plant_Animation()
     else{
         bomb_timer->stop();
         Set_Default_Values();
-        Bomb_Detonate->start(explosion_Animation_Speed);
+        Show_Sprite(0);
         emit start_explosion(Bomb_Detonate);
     }
 }
 
 void bomb::Bomb_Explosion_Animation(){
+    if (explosion_y == explosion_frame_ammount){
+        Bomb_Detonate->stop();
+        Set_Default_Values();
+        emit end_explosion();
+    }
+    else{
+        //Seleccionar explosion
+        Explosion_Select_Sprite(explosion_x, explosion_y);
+        //Selecciono los sprites individuales
+        Scale_sprite(Scale);
+        Show_Sprite(1);
 
+        //Cambio de la explosion que se esta eligiendo
+        kaboom1();
+    }
 }
+
 
 //Set and Get Methods
 void bomb::Set_Default_Values(){
     Bomb_Animation_Actual_Frame = 0;
     explosion_x = 0;
     explosion_y = 0;
+    contador_bomb = 0;
+    activate_bomb(0);
 }
 
 bool bomb::is_activated()
@@ -104,3 +130,4 @@ void bomb::activate_bomb(bool act)
 {
     is_active = act;
 }
+

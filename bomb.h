@@ -16,12 +16,6 @@ public:
         //Already_Exist
     void Set_Already_Exist(bool exist);
     bool Get_Already_Exist();
-        //Bomb_pos_x
-    void Set_Bomb_pos_x(int x);
-    int Get_Bomb_pos_x();
-        //Bomb_pos_y
-    void Set_Bomb_pos_y(int y);
-    int Get_Bomb_pos_y();
 
     void Set_Default_Values();
     bool is_activated();
@@ -44,13 +38,6 @@ private:
     int explosion_y;
     int explosion_x;
     QPixmap *Full_Explosions;
-    //Array Explosions:
-        // 0:center
-        // 1:up end
-        // 2:down end
-        // 3:left end
-        // 4:right end
-    QPixmap *Explosions[5];
 
     //Other
     bool is_active;
@@ -69,6 +56,7 @@ private slots:
 
 signals:
     void start_explosion(QTimer *timer);
+    void end_explosion();
 };
 
 #endif // BOMB_H

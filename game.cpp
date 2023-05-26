@@ -11,9 +11,11 @@ game::game()
     Enemy = new enemy();
         //Walls
     int i;
+            //Limits
     for (i = 0; i < Number_of_Limits; i++){
         Limits[i] = new Wall(0, 0, 0);
     }
+            //Inside Walls
     for (i = 0; i < Number_of_Inside_Walls; i++){
         Inside_Walls[i] = new Wall(0, 0, 0);
     }
@@ -33,7 +35,8 @@ game::game()
     Checking->start(Check);
         //Connect Colocar Bomba
     connect(bomberman, SIGNAL(colocar_bomba(QGraphicsItem*)), this, SLOT(poner_bomba(QGraphicsItem*)));
-    connect(bomberman, SIGNAL(quita_bomba(QGraphicsItem*,QTimer*)), this, SLOT(quitar_bomba(QGraphicsItem*,QTimer*)));
+    connect(bomberman, SIGNAL(quita_bomba(QTimer*)), this, SLOT(quitar_bomba(QTimer*)));
+    connect(bomberman, SIGNAL(end_explosion(QGraphicsItem*)), this, SLOT(Fin_Explosion(QGraphicsItem*)));
 }
 
 game::~game()
@@ -70,9 +73,13 @@ void game::poner_bomba(QGraphicsItem *item)
     addItem(item);
 }
 
-void game::quitar_bomba(QGraphicsItem *item, QTimer *timer){
-    removeItem(item);
+void game::quitar_bomba(QTimer *timer){
     timer->start(explosion_Animation_Speed);
+}
+
+void game::Fin_Explosion(QGraphicsItem *item)
+{
+    removeItem(item);
 }
 
 void game::Check_with_mc(){
