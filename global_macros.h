@@ -4,6 +4,7 @@
 
 //General
 #define Scale 3
+#define Scale_Characters (Scale-0.2)
 #define Check 1
 #define Total_Number_of_Walls (Number_of_Limits + Number_of_Inside_Walls)
 

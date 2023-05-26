@@ -124,21 +124,17 @@ void game::Walls_with_character(Character *chara, Wall *muro){
         if (chara->Get_Direction() == 'u'){
             chara->Set_Direction('d');
             chara->Move();
-            chara->Move();
         }
         else if (chara->Get_Direction() == 'd'){
             chara->Set_Direction('u');
-            chara->Move();
             chara->Move();
         }
         else if (chara->Get_Direction() == 'l'){
             chara->Set_Direction('r');
             chara->Move();
-            chara->Move();
         }
         else if (chara->Get_Direction() == 'r'){
             chara->Set_Direction('l');
-            chara->Move();
             chara->Move();
         }
     }
@@ -147,7 +143,7 @@ void game::Walls_with_character(Character *chara, Wall *muro){
 void game::Enemy_and_Main_Character(Character *chara, enemy *villian)
 {
     if (chara->Get_isAlive()){
-        if (chara->collidesWithItem(villian)){
+        if (chara->collidesWithItem(villian) && villian->Get_isAlive()){
             chara->Set_isAlive(0);
             chara->Set_Direction('n');
         }
@@ -182,14 +178,14 @@ void game::SetMC()
 {
     //Set Bomberman
     bomberman->Select_sprite(4, 0);
-    bomberman->Scale_sprite(Scale);
+    bomberman->Scale_sprite(Scale_Characters);
     bomberman->Show_Sprite(1);
     addItem(bomberman);
 }
 
 void game::SetEnemy(){
     Enemy->Select_sprite(0, 0);
-    Enemy->Scale_sprite(Scale);
+    Enemy->Scale_sprite(Scale_Characters);
     Enemy->Show_Sprite(1);
     addItem(Enemy);
 }

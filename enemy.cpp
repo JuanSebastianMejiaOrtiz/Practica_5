@@ -112,7 +112,7 @@ void enemy::Enemy_Animation(){
 void enemy::Enemy_Animation_Right(){
     if (Walk_Animation_Actual_Frame < Walk_Animation_Frame_Ammount_mc){
         Select_sprite( (Walk_Animation_Actual_Frame), 0);
-        Scale_sprite(Scale);
+        Scale_sprite(Scale_Characters);
         Show_Sprite(1);
         Walk_Animation_Actual_Frame++;
     }
@@ -124,7 +124,7 @@ void enemy::Enemy_Animation_Right(){
 void enemy::Enemy_Animation_Left(){
     if (Walk_Animation_Actual_Frame < Walk_Animation_Frame_Ammount_mc){
         Select_sprite( (enemy_Walk_Animation_Frame_Ammount + Walk_Animation_Actual_Frame), 0);
-        Scale_sprite(Scale);
+        Scale_sprite(Scale_Characters);
         Show_Sprite(1);
         Walk_Animation_Actual_Frame++;
     }

@@ -20,6 +20,9 @@ public:
 private:
     Ui::MainWindow *ui;
     game *nivel;
+
+private slots:
+    void Reset_Game();
 };
 
 #endif // MAINWINDOW_H
