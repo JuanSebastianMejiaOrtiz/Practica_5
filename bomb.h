@@ -27,6 +27,9 @@ public:
     //Position
     QPointF Pos_Bomb;
 
+    //Explosion
+    bool exploted;
+
 private:
     //Attributes
         //Animation

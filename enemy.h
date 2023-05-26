@@ -4,6 +4,8 @@
 
 #include "character.h"
 #include "global_macros.h"
+#include <cstdlib>
+#include <ctime>
 
 class enemy : public Character
 {

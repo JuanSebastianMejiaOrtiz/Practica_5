@@ -25,6 +25,7 @@ enemy::enemy() : Character(enemy_pos_x_initial, (enemy_posy_block_initial * enem
     connect(Dead_Timer, SIGNAL(timeout()), this, SLOT(Dead_Animation()));
     connect(Change_Move_Timer, SIGNAL(timeout()), this, SLOT(Enemy_Set_Direction()));
     connect(Enemy_Move_Timer, SIGNAL(timeout()), SLOT(Enemy_Move()));
+
     Dead_Timer->start(enemy_Dead_Animation_Speed);
     Change_Move_Timer->start(enemy_change_direction);
     Enemy_Move_Timer->start(enemy_Walk_Animation_Speed);
@@ -38,10 +39,19 @@ enemy::~enemy()
 
 void enemy::Enemy_Set_Direction()
 {
-    if (Get_Direction() == 'l'){
+    std::srand((unsigned) std::time(NULL));
+    int random = std::rand() % 4;
+
+    if (random == 0){
+        Set_Direction('u');
+    }
+    else if (random == 1){
+        Set_Direction('d');
+    }
+    else if (random == 2){
         Set_Direction('r');
     }
-    else if (Get_Direction() == 'r'){
+    else if (random == 3){
         Set_Direction('l');
     }
 }
@@ -91,10 +101,10 @@ void enemy::Enemy_Movement()
 }
 
 void enemy::Enemy_Animation(){
-    if(Get_Direction() == 'u' || Get_Direction() == 'r'){
+    if((Get_Direction() == 'u') || (Get_Direction() == 'r')){
         Enemy_Animation_Right();
     }
-    else if (Get_Direction() == 'd' || Get_Direction() == 'l'){
+    else if ((Get_Direction() == 'd') || (Get_Direction() == 'l')){
         Enemy_Animation_Left();
     }
 }
@@ -107,7 +117,6 @@ void enemy::Enemy_Animation_Right(){
         Walk_Animation_Actual_Frame++;
     }
     else{
-       // timer->stop();
         Walk_Animation_Actual_Frame = 0;
     }
 }
@@ -120,7 +129,6 @@ void enemy::Enemy_Animation_Left(){
         Walk_Animation_Actual_Frame++;
     }
     else{
-        timer->stop();
         Walk_Animation_Actual_Frame = 0;
     }
 }

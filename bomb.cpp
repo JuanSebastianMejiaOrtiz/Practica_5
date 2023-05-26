@@ -19,6 +19,7 @@ bomb::bomb()
 
     //Set Default Values
     is_active = false;
+    exploted = false;
         //Animation
             //Bomb
     Bomb_Animation_Speed = bomb_Animation_Speed;
@@ -89,6 +90,7 @@ void bomb::Bomb_Plant_Animation()
         bomb_timer->stop();
         Set_Default_Values();
         Show_Sprite(0);
+        exploted = 1;
         emit start_explosion(Bomb_Detonate);
     }
 }
@@ -119,6 +121,7 @@ void bomb::Set_Default_Values(){
     explosion_y = 0;
     contador_bomb = 0;
     activate_bomb(0);
+    exploted = 0;
 }
 
 bool bomb::is_activated()

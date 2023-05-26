@@ -88,7 +88,7 @@ void game::Check_with_mc(){
         //Limits
     int i;
     for (i = 0; i < Number_of_Limits; i++){
-    Walls_with_character(bomberman, Limits[i]);
+        Walls_with_character(bomberman, Limits[i]);
     }
         //Inside Walls
     for (i = 0; i < Number_of_Inside_Walls; i++){
@@ -97,6 +97,9 @@ void game::Check_with_mc(){
     
     //Collides with enemies
     Enemy_and_Main_Character(bomberman, Enemy);
+
+    //Collides with explosion
+    Character_with_explosion(bomberman->bomba, bomberman);
 }
 
 void game::Check_with_enemy(){
@@ -105,11 +108,15 @@ void game::Check_with_enemy(){
         //Limits
     for (i = 0; i < Number_of_Limits; i++){
         Walls_with_character(Enemy, Limits[i]);
+
     }
         //Inside Walls
     for (i = 0; i < Number_of_Inside_Walls; i++){
         Walls_with_character(Enemy, Inside_Walls[i]);
     }
+
+    //Collides with explosion
+    Character_with_explosion(bomberman->bomba, Enemy);
 }
 
 void game::Walls_with_character(Character *chara, Wall *muro){
@@ -117,17 +124,21 @@ void game::Walls_with_character(Character *chara, Wall *muro){
         if (chara->Get_Direction() == 'u'){
             chara->Set_Direction('d');
             chara->Move();
+            chara->Move();
         }
         else if (chara->Get_Direction() == 'd'){
             chara->Set_Direction('u');
+            chara->Move();
             chara->Move();
         }
         else if (chara->Get_Direction() == 'l'){
             chara->Set_Direction('r');
             chara->Move();
+            chara->Move();
         }
         else if (chara->Get_Direction() == 'r'){
             chara->Set_Direction('l');
+            chara->Move();
             chara->Move();
         }
     }
@@ -152,6 +163,16 @@ void game::Walls_with_explosion(bomb *boom, Wall *Pared[Number_of_Inside_Walls])
             if (Pared[i]->Get_Wall_Destructible()){
                 Pared[i]->Set_Wall_Exist(0);
             }
+        }
+    }
+}
+
+void game::Character_with_explosion(bomb *boom, Character *chara)
+{
+    if (boom->collidesWithItem(chara) && boom->exploted){
+        if (chara->Get_isAlive()){
+            chara->Set_isAlive(0);
+            chara->Set_Direction('n');
         }
     }
 }

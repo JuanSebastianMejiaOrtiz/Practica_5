@@ -9,7 +9,7 @@
 
 //Main Character (mc)
     //Movement
-#define Walk_Speed_mc 4
+#define Walk_Speed_mc 5
 
     //Animation
 #define _Walk_Animation_Speed_mc 500
@@ -30,7 +30,7 @@
     //Animation
 #define wall_Destruction_Frame_Ammount 7
 #define walls_extra 2
-#define wall_Destruction_Speed 200
+#define wall_Destruction_Speed 100
 
     //Medidas
 #define wall_alto 16
@@ -47,14 +47,14 @@
     //Animation
         //Bomb
 #define bomb_charge_frame_ammount 3
-#define bomb_charge_animation_repeat (3 * bomb_charge_frame_ammount)
+#define bomb_charge_animation_repeat (4 * bomb_charge_frame_ammount)
 #define bomb_Animation_Speed 200
         //Explosion
 #define explosion_frame_ammount 4
 #define explosion_ammount_per_line 2
 #define explosion_alto_frame_ammount 5
 #define explosion_ancho_frame_ammount 5
-#define explosion_Animation_Speed 100
+#define explosion_Animation_Speed 50
 
     //Medidas
 #define bomb_ancho 16
