@@ -61,7 +61,7 @@ private:
         //Enemy with Character
     void Enemy_and_Main_Character(Character *chara, enemy *villian);
         //Bomb Explosion
-    //void Walls_with_explosion(bomb *boom);
+    void Walls_with_explosion(bomb *boom, Wall *Pared[Number_of_Inside_Walls]);
 
     void Check_with_mc();
     void Check_with_enemy();

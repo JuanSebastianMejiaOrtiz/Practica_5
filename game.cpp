@@ -66,6 +66,7 @@ void game::Check_Collisions()
 {
     Check_with_mc();
     Check_with_enemy();
+    Walls_with_explosion(bomberman->bomba, Inside_Walls);
 }
 
 void game::poner_bomba(QGraphicsItem *item)
@@ -101,7 +102,7 @@ void game::Check_with_mc(){
 void game::Check_with_enemy(){
     int i;
     //With Walls
-    //Limits
+        //Limits
     for (i = 0; i < Number_of_Limits; i++){
         Walls_with_character(Enemy, Limits[i]);
     }
@@ -112,7 +113,7 @@ void game::Check_with_enemy(){
 }
 
 void game::Walls_with_character(Character *chara, Wall *muro){
-    if (chara->collidesWithItem(muro)){
+    if (chara->collidesWithItem(muro) && muro->Get_Wall_Exist()){
         if (chara->Get_Direction() == 'u'){
             chara->Set_Direction('d');
             chara->Move();
@@ -138,6 +139,19 @@ void game::Enemy_and_Main_Character(Character *chara, enemy *villian)
         if (chara->collidesWithItem(villian)){
             chara->Set_isAlive(0);
             chara->Set_Direction('n');
+        }
+    }
+}
+
+void game::Walls_with_explosion(bomb *boom, Wall *Pared[Number_of_Inside_Walls])
+{
+    int i;
+
+    for (i = 0; i < Number_of_Inside_Walls; i++){
+        if (boom->collidesWithItem(Pared[i])){
+            if (Pared[i]->Get_Wall_Destructible()){
+                Pared[i]->Set_Wall_Exist(0);
+            }
         }
     }
 }
@@ -240,25 +254,64 @@ void game::Create_Inside_Walls(){
         Set_Walls_Pos(Inside_Walls[i], pos_in_x, pos_in_y);
     }
     //Destructible
+    Inside_Walls[i]->Set_Wall_Destructible(1);
     Set_Walls_Pos(Inside_Walls[i++], 1, 3);
+
+    Inside_Walls[i]->Set_Wall_Destructible(1);
     Set_Walls_Pos(Inside_Walls[i++], 1, 4);
+
+    Inside_Walls[i]->Set_Wall_Destructible(1);
     Set_Walls_Pos(Inside_Walls[i++], 2, 5);
+
+    Inside_Walls[i]->Set_Wall_Destructible(1);
     Set_Walls_Pos(Inside_Walls[i++], 3, 3);
+
+    Inside_Walls[i]->Set_Wall_Destructible(1);
     Set_Walls_Pos(Inside_Walls[i++], 3, 7);
+
+    Inside_Walls[i]->Set_Wall_Destructible(1);
     Set_Walls_Pos(Inside_Walls[i++], 3, 9);
+
+    Inside_Walls[i]->Set_Wall_Destructible(1);
     Set_Walls_Pos(Inside_Walls[i++], 5, 10);
+
+    Inside_Walls[i]->Set_Wall_Destructible(1);
     Set_Walls_Pos(Inside_Walls[i++], 6, 6);
+
+    Inside_Walls[i]->Set_Wall_Destructible(1);
     Set_Walls_Pos(Inside_Walls[i++], 7, 3);
+
+    Inside_Walls[i]->Set_Wall_Destructible(1);
     Set_Walls_Pos(Inside_Walls[i++], 8, 6);
+
+    Inside_Walls[i]->Set_Wall_Destructible(1);
     Set_Walls_Pos(Inside_Walls[i++], 8, 7);
+
+    Inside_Walls[i]->Set_Wall_Destructible(1);
     Set_Walls_Pos(Inside_Walls[i++], 8, 9);
+
+    Inside_Walls[i]->Set_Wall_Destructible(1);
     Set_Walls_Pos(Inside_Walls[i++], 9, 2);
+
+    Inside_Walls[i]->Set_Wall_Destructible(1);
     Set_Walls_Pos(Inside_Walls[i++], 9, 9);
+
+    Inside_Walls[i]->Set_Wall_Destructible(1);
     Set_Walls_Pos(Inside_Walls[i++], 10, 6);
+
+    Inside_Walls[i]->Set_Wall_Destructible(1);
     Set_Walls_Pos(Inside_Walls[i++], 11, 2);
+
+    Inside_Walls[i]->Set_Wall_Destructible(1);
     Set_Walls_Pos(Inside_Walls[i++], 11, 10);
+
+    Inside_Walls[i]->Set_Wall_Destructible(1);
     Set_Walls_Pos(Inside_Walls[i++], 12, 8);
+
+    Inside_Walls[i]->Set_Wall_Destructible(1);
     Set_Walls_Pos(Inside_Walls[i++], 14, 1);
+
+    Inside_Walls[i]->Set_Wall_Destructible(1);
     Set_Walls_Pos(Inside_Walls[i++], 14, 9);
 }
 

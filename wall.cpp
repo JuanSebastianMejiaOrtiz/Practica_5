@@ -23,7 +23,7 @@ Wall::Wall(int xPos, int yPos, bool Destructible)
 
     //Connect and Start Timer
     connect(Wall_Time, SIGNAL(timeout()), this, SLOT(Wall_Destruction_Animation()));
-    //Wall_Time->start(Wall_Destruction_Speed);
+    Wall_Time->start(wall_Destruction_Speed);
 }
 
 Wall::~Wall()
@@ -76,7 +76,7 @@ bool Wall::Get_Wall_Exist()
 
 void Wall::Wall_Destruction_Animation()
 {
-    if (Get_Wall_Destructible()){
+    if (Get_Wall_Destructible() && (!Get_Wall_Exist())){
         if (Wall_Destruction_Actual_Frame < wall_Destruction_Frame_Ammount){
             Select_sprite(Wall_Destruction_Actual_Frame + 1, 0);
             Scale_sprite(Scale);

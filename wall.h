@@ -24,14 +24,14 @@ public:
     void Set_Wall_Exist(bool exist); //0:Doesn't Exist, 1:Exist
     bool Get_Wall_Exist(); //0:Doesn't Exist, 1:Exist
 
+    //Animations
+    QTimer *Wall_Time;
+
 protected:
     int Wall_Pos_x; //Wall position in x
     int Wall_Pos_y; //Wall position in y
     bool *Wall_Destructible; //0:Indestructible, 1:Destructible
     bool *Wall_Exist; //0:Doesn't Exist, 1:Exist
-
-    //Animations
-    QTimer *Wall_Time;
 
 private:
     //Animations
